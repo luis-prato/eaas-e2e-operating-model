@@ -70,7 +70,7 @@ This repository uses a **dual license** to distinguish content from code.
 | **Scripts, manifests, platform format files** | [Apache-2.0](LICENSE-code) | `scripts/`, `manifest.json`, `formats/`, `.github/` |
 
 **Free for:** research, education, internal capability building, non-commercial consulting.  
-**Commercial use** (embedding in a paid product or billable EaaS implementation) requires written permission: luis.prato@klexu.com
+**Commercial use** (embedding in a paid product or billable EaaS implementation) requires written permission: hello@luisprato.com
 
 ---
 

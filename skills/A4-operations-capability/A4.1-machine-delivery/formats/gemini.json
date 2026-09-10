@@ -1,0 +1,41 @@
+{
+  "name": "e2e_machine_delivery",
+  "description": "EaaS E2E Operating Model — A4.1 Machine Delivery & Installation. Manage the full asset delivery lifecycle — from pre-delivery planning through transport, installation, commissioning, and operator training — with SLA clock starting at go-live.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "asset_type": {
+        "type": "STRING",
+        "description": "Asset type and technical specifications"
+      },
+      "site_context": {
+        "type": "STRING",
+        "description": "Customer site characteristics and access constraints"
+      },
+      "go_live_date": {
+        "type": "STRING",
+        "description": "Target go-live date and SLA start"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "asset_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A4.1",
+    "skill_group": "A4 · Operations & Capability",
+    "skill_role": "Operations Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "delivery",
+      "installation",
+      "commissioning",
+      "fat",
+      "go-live"
+    ]
+  }
+}

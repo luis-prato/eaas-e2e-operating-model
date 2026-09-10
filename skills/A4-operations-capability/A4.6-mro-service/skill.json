@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A4.6",
+  "slug": "e2e-mro-service",
+  "name": "MRO Service",
+  "fullName": "A4.6 MRO Service",
+  "group": "A4 · Operations & Capability",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Support",
+  "layer": "Back Office",
+  "role": "Field Service Manager",
+  "tags": [
+    "mro",
+    "maintenance",
+    "field-service",
+    "mttr",
+    "mtbf",
+    "spare-parts"
+  ],
+  "summary": "Deliver preventive and reactive maintenance operations that protect SLA performance and residual asset value — with KPI-driven field service and parts management.",
+  "outcomes": [
+    "PM and reactive maintenance playbook",
+    "MRO KPI framework (MTTR, MTBF, First-Time Fix)",
+    "Spare parts strategy and inventory model",
+    "Field service dispatch and routing process"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

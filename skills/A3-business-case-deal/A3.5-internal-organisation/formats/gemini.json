@@ -1,0 +1,41 @@
+{
+  "name": "e2e_internal_organisation",
+  "description": "EaaS E2E Operating Model — A3.5 Internal Organisation. Design the governance structure, team composition, and decision-making cadences required to operate EaaS contracts reliably at scale.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "portfolio_size": {
+        "type": "STRING",
+        "description": "Current and target number of EaaS contracts"
+      },
+      "existing_structure": {
+        "type": "STRING",
+        "description": "Current organisational structure and teams"
+      },
+      "geographic_scope": {
+        "type": "STRING",
+        "description": "Single country or multi-country operation"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "portfolio_size"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.5",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Operations Director",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "governance",
+      "organisation",
+      "raci",
+      "team-design",
+      "centre-of-excellence"
+    ]
+  }
+}

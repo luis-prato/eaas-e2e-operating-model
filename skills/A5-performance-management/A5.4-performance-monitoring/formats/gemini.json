@@ -1,0 +1,42 @@
+{
+  "name": "e2e_performance_monitoring",
+  "description": "EaaS E2E Operating Model — A5.4 Performance Monitoring. Measure EaaS asset and service KPIs with precision — from IoT data collection through SLA compliance determination and the monthly performance certificate.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "contract_kpis": {
+        "type": "STRING",
+        "description": "KPIs and SLA targets defined in the contract"
+      },
+      "measurement_period": {
+        "type": "STRING",
+        "description": "Measurement period (month, quarter)"
+      },
+      "data_sources": {
+        "type": "STRING",
+        "description": "IoT, CMMS, and other data sources available"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "contract_kpis"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A5.4",
+    "skill_group": "A5 · Performance Management",
+    "skill_role": "Contract Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "performance",
+      "monitoring",
+      "sla",
+      "kpi",
+      "compliance",
+      "telemetry"
+    ]
+  }
+}

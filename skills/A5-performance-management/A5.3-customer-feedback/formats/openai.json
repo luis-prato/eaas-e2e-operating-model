@@ -1,0 +1,52 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_customer_feedback",
+    "description": "[EaaS E2E Operating Model — A5.3 Customer Feedback] Collect, analyse, and act on customer sentiment across transactional, relationship, and unsolicited channels — with NPS, CSAT, and renewal intent as the core metrics. Outputs: Transactional and relationship feedback framework; NPS and CSAT measurement programme; Close-the-loop process (acknowledge → act → confirm); Renewal risk flag report.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "account_portfolio": {
+          "type": "string",
+          "description": "Accounts to include in feedback programme"
+        },
+        "feedback_trigger": {
+          "type": "string",
+          "description": "Specific feedback trigger or programme design request"
+        },
+        "current_metrics": {
+          "type": "string",
+          "description": "Current NPS, CSAT, or satisfaction data if available"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "account_portfolio"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A5 · Performance Management",
+    "role": "Customer Success Manager",
+    "tags": [
+      "feedback",
+      "nps",
+      "csat",
+      "ces",
+      "renewal-intent",
+      "voice-of-customer"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A5-performance-management/A5.3-customer-feedback"
+  }
+}

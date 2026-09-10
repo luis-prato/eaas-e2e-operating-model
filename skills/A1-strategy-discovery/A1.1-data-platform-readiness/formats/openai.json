@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_data_platform_readiness",
+    "description": "[EaaS E2E Operating Model — A1.1 Data Platform Readiness] Assess whether your data infrastructure can support real-time asset monitoring, automated SLA calculation, and ESG reporting before an EaaS contract goes live. Outputs: Data readiness audit across six dimensions; Gap remediation roadmap with cost estimates; Go/no-go recommendation for EaaS deployment; Data governance framework for IoT and operational data.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "asset_type": {
+          "type": "string",
+          "description": "Type of industrial asset to be monitored (e.g. compressor, HVAC, conveyor)"
+        },
+        "data_sources": {
+          "type": "string",
+          "description": "Existing data sources and systems (SCADA, ERP, CMMS, etc.)"
+        },
+        "sla_requirements": {
+          "type": "string",
+          "description": "Performance KPIs and SLA targets the contract must measure"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "asset_type"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A1 · Strategy & Discovery",
+    "role": "Technology Lead",
+    "tags": [
+      "data",
+      "infrastructure",
+      "iot",
+      "esg",
+      "readiness"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A1-strategy-discovery/A1.1-data-platform-readiness"
+  }
+}

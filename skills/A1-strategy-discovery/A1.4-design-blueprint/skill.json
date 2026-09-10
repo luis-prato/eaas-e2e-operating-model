@@ -1,0 +1,36 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.4",
+  "slug": "e2e-design-blueprint",
+  "name": "Design Blueprint",
+  "fullName": "A1.4 Design Blueprint",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Front Office",
+  "role": "Solution Designer",
+  "tags": [
+    "solution",
+    "design",
+    "sla",
+    "outcome-model"
+  ],
+  "summary": "Translate discovery findings into a structured EaaS solution concept — defining the outcome model, asset scope, SLA framework, and service wrapper before commercial development begins.",
+  "outcomes": [
+    "EaaS solution concept document",
+    "Outcome model definition",
+    "Asset scope and SLA framework",
+    "Design-to-deal handover pack"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

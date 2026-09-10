@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A4.2",
+  "slug": "e2e-customer-onboarding",
+  "name": "Customer Onboarding",
+  "fullName": "A4.2 Customer Onboarding",
+  "group": "A4 · Operations & Capability",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Deliver",
+  "layer": "Front Office",
+  "role": "Customer Success Manager",
+  "tags": [
+    "onboarding",
+    "customer-success",
+    "training",
+    "90-day",
+    "go-live"
+  ],
+  "summary": "Deliver a structured 90-day onboarding programme that establishes the people, processes, and systems needed for a successful EaaS contract from day one.",
+  "outcomes": [
+    "Onboarding programme plan (Week 1 through Month 3)",
+    "Stakeholder engagement and training schedule",
+    "Systems access and integration checklist",
+    "90-day onboarding completion assessment"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

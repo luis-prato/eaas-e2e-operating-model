@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaaS Product Suitability Assessment</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #ffffff;
+  color: #111111;
+  font-family: Arial, "Helvetica Neue", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 0;
+}
+
+.page-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 36px 32px 60px;
+}
+
+/* ─── TITLE BLOCK ─── */
+.title-block {
+  background: #111111;
+  color: #ffffff;
+  padding: 28px 32px 22px;
+  margin: -36px -32px 32px;
+}
+.title-block h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.accent-bar {
+  width: 88px; height: 5px;
+  background: #00FB92;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.title-block .attribution {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.5px;
+}
+
+/* ─── METADATA FIELDS ─── */
+.meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.meta-field label {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,0.45);
+  margin-bottom: 4px;
+}
+.meta-field input {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid #dddddd;
+  padding: 5px 0;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #111111;
+  background: transparent;
+  outline: none;
+}
+.meta-field input:focus { border-bottom-color: #00FB92; }
+
+/* ─── SECTION HEADERS ─── */
+.section-header {
+  margin: 28px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.section-header h2 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #111111;
+}
+.section-header p {
+  font-size: 11px;
+  color: rgba(0,0,0,0.5);
+  margin-top: 3px;
+}
+
+/* ─── SCALE LEGEND ─── */
+.scale-legend {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.scale-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  color: rgba(0,0,0,0.55);
+}
+.scale-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; height: 20px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: #f5f5f5;
+  color: #111111;
+}
+
+/* ─── ASSESSMENT TABLE ─── */
+table.assessment {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.assessment th {
+  background: #111111;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 9px 10px;
+  text-align: left;
+  border: 1px solid #111111;
+}
+.assessment th.score-col {
+  text-align: center;
+  width: 80px;
+}
+.assessment td {
+  padding: 9px 10px;
+  vertical-align: top;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-size: 11.5px;
+}
+.assessment tbody tr:nth-child(odd) td { background: #f5f5f5; }
+.assessment tbody tr:nth-child(even) td { background: #ffffff; }
+
+.num-cell {
+  width: 30px;
+  text-align: center;
+  font-weight: 700;
+  color: rgba(0,0,0,0.35);
+  font-size: 11px;
+}
+.char-name { font-weight: 700; color: #111111; }
+.char-desc { color: rgba(0,0,0,0.55); font-size: 11px; margin-top: 2px; }
+
+.score-input-cell {
+  text-align: center;
+  vertical-align: middle;
+}
+.score-input {
+  width: 44px; height: 30px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  background: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+.score-input:focus { border-color: #00FB92; }
+
+/* Total row */
+.total-row td {
+  background: #00FB92 !important;
+  font-weight: 700;
+  color: #111111;
+  font-size: 13px;
+  border-color: #00c073;
+}
+.total-row .total-label { text-align: right; padding-right: 12px; }
+.total-score-display {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* ─── INTERPRETATION ─── */
+.interpretation {
+  margin-bottom: 28px;
+}
+.interpretation h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(0,0,0,0.45);
+  margin-bottom: 8px;
+}
+.interp-table { width: 100%; border-collapse: collapse; }
+.interp-table td {
+  padding: 8px 12px;
+  font-size: 11.5px;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.interp-table tr:nth-child(1) td:first-child { background: #ffeaea; color: #cc0000; font-weight: 700; }
+.interp-table tr:nth-child(2) td:first-child { background: #fff4e0; color: #996600; font-weight: 700; }
+.interp-table tr:nth-child(3) td:first-child { background: rgba(0,251,146,0.12); color: #006633; font-weight: 700; }
+.interp-table tr:nth-child(odd) td:last-child { background: #f5f5f5; }
+.interp-table tr:nth-child(even) td:last-child { background: #ffffff; }
+
+/* ─── COMBINED SCORE ─── */
+.combined-block {
+  background: #111111;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 24px 28px;
+  margin: 28px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+.score-box { text-align: center; }
+.score-box .label {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.score-box .value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #00FB92;
+  line-height: 1;
+}
+.score-box .denom {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+}
+.score-box.combined .value { font-size: 40px; }
+.divider-sym {
+  text-align: center;
+  font-size: 28px;
+  color: rgba(255,255,255,0.2);
+}
+
+/* ─── FINDINGS ─── */
+.findings-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.findings-box {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 14px 16px;
+}
+.findings-box h4 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,0.45);
+  margin-bottom: 10px;
+}
+.findings-box .finding-item {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 7px;
+  font-size: 11.5px;
+}
+.finding-num {
+  flex-shrink: 0;
+  width: 18px; height: 18px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700;
+}
+.findings-box.strengths .finding-num { background: rgba(0,251,146,0.2); color: #006633; }
+.findings-box.gaps .finding-num { background: rgba(255,60,60,0.12); color: #cc0000; }
+.finding-text {
+  border-bottom: 1px dashed rgba(0,0,0,0.12);
+  width: 100%;
+  min-height: 20px;
+  outline: none;
+  font-family: Arial, sans-serif;
+  font-size: 11.5px;
+}
+.finding-text:focus { border-bottom-color: #00FB92; }
+
+/* ─── STRATEGIC NOTES ─── */
+.notes-area {
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 28px;
+}
+.notes-area h4 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(0,0,0,0.45);
+  margin-bottom: 10px;
+}
+.notes-area textarea {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #111111;
+  resize: none;
+  outline: none;
+  min-height: 72px;
+  line-height: 1.6;
+}
+
+/* ─── ACTION BUTTONS ─── */
+.btn-row {
+  display: flex; gap: 10px; margin-bottom: 36px;
+}
+.btn {
+  padding: 8px 18px;
+  border: none; border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+}
+.btn-primary { background: #111111; color: #ffffff; }
+.btn-secondary { background: #f0f0f0; color: #111111; }
+.btn:hover { opacity: 0.85; }
+
+/* ─── FOOTER ─── */
+.footer {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 16px;
+  font-size: 10px;
+  color: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ─── PRINT ─── */
+@media print {
+  body { padding: 0; font-size: 10px; }
+  .page-wrap { max-width: 100%; padding: 16px 20px; }
+  .title-block { margin: -16px -20px 20px; padding: 16px 20px 14px; }
+  .btn-row { display: none; }
+  .score-input {
+    border: 1px solid #ccc;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .total-row td, .combined-block {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<!-- TITLE BLOCK -->
+<div class="title-block">
+  <h1>EaaS Product Suitability Assessment</h1>
+  <div class="accent-bar"></div>
+  <div class="attribution">EaaS End-to-End Operating Model · v1.24.0 · luisprato.com/resources · Apache 2.0</div>
+</div>
+
+<!-- METADATA -->
+<div class="meta-row">
+  <div class="meta-field">
+    <label>Equipment / Product name</label>
+    <input type="text" placeholder="e.g. Industrial Robot Arm X200">
+  </div>
+  <div class="meta-field">
+    <label>Assessed by</label>
+    <input type="text" placeholder="Name / Role">
+  </div>
+  <div class="meta-field">
+    <label>Date</label>
+    <input type="text" placeholder="DD/MM/YYYY">
+  </div>
+</div>
+
+<!-- SCALE LEGEND -->
+<div class="scale-legend">
+  <span style="font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(0,0,0,0.4);margin-right:4px">Scoring scale:</span>
+  <div class="scale-item"><div class="scale-badge">0</div> Doesn't apply / very low</div>
+  <div class="scale-item"><div class="scale-badge">1</div> Somewhat applies</div>
+  <div class="scale-item"><div class="scale-badge">2</div> Clearly applies</div>
+  <div class="scale-item"><div class="scale-badge">3</div> Strongly applies</div>
+</div>
+
+<!-- STEP 1A — CUSTOMER LENS -->
+<div class="section-header">
+  <h2>Step 1A — Customer Lens Assessment</h2>
+  <p>Rate your equipment from your customer's perspective. How do customers experience it today?</p>
+</div>
+
+<table class="assessment" id="customer-table">
+  <thead>
+    <tr>
+      <th class="num-col" style="width:36px">#</th>
+      <th>Characteristic</th>
+      <th>What it means</th>
+      <th class="score-col">Score (0–3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="num-cell">1</td>
+      <td><span class="char-name">High purchase price</span></td>
+      <td class="char-desc">The upfront capital cost is a significant barrier — typical for heavy equipment, robotics, or specialised hardware</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">2</td>
+      <td><span class="char-name">Predictable usage</span></td>
+      <td class="char-desc">Customers use the equipment in regular, foreseeable production or operational cycles</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">3</td>
+      <td><span class="char-name">High maintenance or operating costs</span></td>
+      <td class="char-desc">Customers face significant ongoing costs for servicing, calibration, parts, or consumables</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">4</td>
+      <td><span class="char-name">Long useful life / durability</span></td>
+      <td class="char-desc">The equipment lasts many years when properly maintained — typical of industrial machinery and professional hardware</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">5</td>
+      <td><span class="char-name">Upgradeable or modular</span></td>
+      <td class="char-desc">The equipment or robotics system can be upgraded, reconfigured, or expanded over time</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">6</td>
+      <td><span class="char-name">Performance outcomes matter most</span></td>
+      <td class="char-desc">Customers care about uptime, throughput, accuracy, or output — not owning the hardware itself</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">7</td>
+      <td><span class="char-name">Customers lack technical expertise</span></td>
+      <td class="char-desc">Customers struggle with maintenance, calibration, software updates, or skilled operation of the equipment</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">8</td>
+      <td><span class="char-name">High residual value</span></td>
+      <td class="char-desc">The equipment retains significant market or functional value after the customer's use period</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="customer" value="" placeholder="0–3"></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="3" class="total-label">Customer Lens Total</td>
+      <td class="score-input-cell"><div class="total-score-display" id="customer-total">—</div></td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- Customer Interpretation -->
+<div class="interpretation">
+  <h3>Customer lens interpretation</h3>
+  <table class="interp-table">
+    <tr><td style="width:90px">0 – 8</td><td>Low EaaS signal — customers may not feel strong pull toward a service model for this equipment</td></tr>
+    <tr><td>9 – 16</td><td>Moderate signal — real customer motivations exist; investigate which ones are strongest</td></tr>
+    <tr><td>17 – 24</td><td>Strong signal — customers face pain points that EaaS directly addresses</td></tr>
+  </table>
+</div>
+
+<!-- STEP 1B — PROVIDER LENS -->
+<div class="section-header">
+  <h2>Step 1B — Provider Lens Assessment</h2>
+  <p>Rate your equipment from your own perspective as the provider. Are you positioned to deliver and operate EaaS?</p>
+</div>
+
+<table class="assessment" id="provider-table">
+  <thead>
+    <tr>
+      <th class="num-col" style="width:36px">#</th>
+      <th>Characteristic</th>
+      <th>What it means</th>
+      <th class="score-col">Score (0–3)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="num-cell">1</td>
+      <td><span class="char-name">You know how customers use the equipment</span></td>
+      <td class="char-desc">You have data or direct insight into usage patterns, shift hours, load cycles, or operational conditions</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">2</td>
+      <td><span class="char-name">You can monitor equipment condition remotely</span></td>
+      <td class="char-desc">Sensors, telematics, IoT connectivity, or diagnostic systems let you track equipment health and usage</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">3</td>
+      <td><span class="char-name">You can maintain or service the equipment efficiently</span></td>
+      <td class="char-desc">You have service technicians, authorised repair networks, or field service capabilities</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">4</td>
+      <td><span class="char-name">You can recover and reuse the equipment at end-of-use</span></td>
+      <td class="char-desc">Take-back logistics and refurbishment processes exist or are feasible for your equipment type</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">5</td>
+      <td><span class="char-name">You have or can build recurring customer relationships</span></td>
+      <td class="char-desc">You're equipped to manage multi-year service contracts, SLAs, and subscription billing</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">6</td>
+      <td><span class="char-name">You have equipment cost clarity</span></td>
+      <td class="char-desc">You understand the true lifetime cost of ownership per unit — including service, parts, and depreciation</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">7</td>
+      <td><span class="char-name">Your equipment has high reuse or remanufacturing potential</span></td>
+      <td class="char-desc">Returned hardware or robotics systems can be refurbished and redeployed profitably</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+    <tr>
+      <td class="num-cell">8</td>
+      <td><span class="char-name">You can absorb upfront investment and wait for returns</span></td>
+      <td class="char-desc">Your business can fund equipment deployment now and recover cost through service fees over time</td>
+      <td class="score-input-cell"><input class="score-input" type="number" min="0" max="3" data-group="provider" value="" placeholder="0–3"></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="total-row">
+      <td colspan="3" class="total-label">Provider Lens Total</td>
+      <td class="score-input-cell"><div class="total-score-display" id="provider-total">—</div></td>
+    </tr>
+  </tfoot>
+</table>
+
+<!-- Provider Interpretation -->
+<div class="interpretation">
+  <h3>Provider lens interpretation</h3>
+  <table class="interp-table">
+    <tr><td style="width:90px">0 – 8</td><td>Significant operational gaps — building EaaS capabilities will require substantial investment</td></tr>
+    <tr><td>9 – 16</td><td>Partial readiness — some strong foundations; specific gaps need a plan</td></tr>
+    <tr><td>17 – 24</td><td>Strong provider fit — you have many of the conditions to operate EaaS profitably</td></tr>
+  </table>
+</div>
+
+<!-- COMBINED SCORE -->
+<div class="combined-block">
+  <div class="score-box">
+    <div class="label">Customer Lens</div>
+    <div class="value"><span id="combined-customer">—</span><span class="denom"> / 24</span></div>
+  </div>
+  <div class="divider-sym">+</div>
+  <div class="score-box">
+    <div class="label">Provider Lens</div>
+    <div class="value"><span id="combined-provider">—</span><span class="denom"> / 24</span></div>
+  </div>
+  <div class="score-box combined" style="border-left:1px solid rgba(255,255,255,0.15);padding-left:20px">
+    <div class="label">Combined EaaS Readiness</div>
+    <div class="value"><span id="combined-total">—</span><span class="denom" style="font-size:18px"> / 48</span></div>
+  </div>
+</div>
+
+<!-- COMBINED INTERPRETATION -->
+<div class="interpretation">
+  <h3>Combined readiness interpretation</h3>
+  <table class="interp-table">
+    <tr><td style="width:90px">0 – 16</td><td>Low readiness — significant gaps on both sides; EaaS is a medium-term ambition requiring capability investment</td></tr>
+    <tr><td>17 – 32</td><td>Moderate readiness — real signals exist; prioritise the gaps with highest commercial impact</td></tr>
+    <tr><td>33 – 48</td><td>High readiness — strong conditions on both sides; EaaS is an executable near-term opportunity</td></tr>
+  </table>
+</div>
+
+<!-- FINDINGS -->
+<div class="section-header">
+  <h2>Assessment Findings</h2>
+  <p>Identify the top EaaS strengths and gaps from both lenses combined</p>
+</div>
+<div class="findings-grid">
+  <div class="findings-box strengths">
+    <h4>Top 3 EaaS Strengths (highest-scoring)</h4>
+    <div class="finding-item"><div class="finding-num">1</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and implication…"></div></div>
+    <div class="finding-item"><div class="finding-num">2</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and implication…"></div></div>
+    <div class="finding-item"><div class="finding-num">3</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and implication…"></div></div>
+  </div>
+  <div class="findings-box gaps">
+    <h4>Top 3 Gaps / Friction Points (lowest-scoring)</h4>
+    <div class="finding-item"><div class="finding-num">1</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and gap…"></div></div>
+    <div class="finding-item"><div class="finding-num">2</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and gap…"></div></div>
+    <div class="finding-item"><div class="finding-num">3</div><div class="finding-text" contenteditable="true" data-placeholder="Characteristic name and gap…"></div></div>
+  </div>
+</div>
+
+<!-- STRATEGIC NOTES -->
+<div class="notes-area">
+  <h4>Strategic Interpretation (3–5 sentences)</h4>
+  <textarea placeholder="What do the scores mean for this specific equipment? Which conditions create the strongest EaaS case? What must be resolved before a viable model can be designed?"></textarea>
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+  <button class="btn btn-secondary" onclick="resetScores()">Reset Scores</button>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>EaaS Product Suitability Assessment · EaaS End-to-End Operating Model v1.24.0</span>
+  <span>© Luis Prato · Apache 2.0 · luisprato.com/resources · Next: eaas-challenge-prioritization</span>
+</div>
+
+</div><!-- .page-wrap -->
+
+<script>
+function clamp(val) {
+  var n = parseInt(val, 10);
+  if (isNaN(n)) return null;
+  return Math.max(0, Math.min(3, n));
+}
+
+function calcGroup(group) {
+  var inputs = document.querySelectorAll('input[data-group="' + group + '"]');
+  var total = 0, allFilled = true;
+  inputs.forEach(function(inp) {
+    var v = clamp(inp.value);
+    if (v === null) { allFilled = false; }
+    else { total += v; inp.value = v; }
+  });
+  return allFilled ? total : null;
+}
+
+function updateTotals() {
+  var cTotal = calcGroup('customer');
+  var pTotal = calcGroup('provider');
+
+  document.getElementById('customer-total').textContent = cTotal !== null ? cTotal + ' / 24' : '—';
+  document.getElementById('provider-total').textContent = pTotal !== null ? pTotal + ' / 24' : '—';
+
+  document.getElementById('combined-customer').textContent = cTotal !== null ? cTotal : '—';
+  document.getElementById('combined-provider').textContent = pTotal !== null ? pTotal : '—';
+
+  if (cTotal !== null && pTotal !== null) {
+    document.getElementById('combined-total').textContent = (cTotal + pTotal);
+  } else {
+    document.getElementById('combined-total').textContent = '—';
+  }
+}
+
+function resetScores() {
+  document.querySelectorAll('.score-input').forEach(function(inp) { inp.value = ''; });
+  updateTotals();
+}
+
+document.querySelectorAll('.score-input').forEach(function(inp) {
+  inp.addEventListener('input', updateTotals);
+  inp.addEventListener('blur', function() {
+    var v = clamp(this.value);
+    this.value = v !== null ? v : '';
+    updateTotals();
+  });
+});
+
+// Placeholder styling for contenteditable
+document.querySelectorAll('.finding-text').forEach(function(el) {
+  el.style.color = 'rgba(0,0,0,0.3)';
+  el.textContent = el.dataset.placeholder || '';
+  el.addEventListener('focus', function() {
+    if (this.textContent === this.dataset.placeholder) {
+      this.textContent = '';
+      this.style.color = '#111111';
+    }
+  });
+  el.addEventListener('blur', function() {
+    if (!this.textContent.trim()) {
+      this.textContent = this.dataset.placeholder || '';
+      this.style.color = 'rgba(0,0,0,0.3)';
+    }
+  });
+});
+</script>
+</body>
+</html>

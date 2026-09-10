@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.5",
+  "slug": "e2e-iot-smart-contracts",
+  "name": "IoT & Smart Contracts",
+  "fullName": "A5.5 IoT & Smart Contracts",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Support",
+  "layer": "Shared Platforms",
+  "role": "Technology Lead",
+  "tags": [
+    "iot",
+    "smart-contracts",
+    "automation",
+    "telemetry",
+    "billing",
+    "sensors"
+  ],
+  "summary": "Integrate real-time asset telemetry with automated contract execution — so performance data triggers SLA validation, payment calculation, and operational alerts without manual intervention.",
+  "outcomes": [
+    "IoT architecture specification (sensor, connectivity, platform)",
+    "Smart contract trigger logic rules",
+    "Automated payment run process",
+    "IoT security audit framework"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

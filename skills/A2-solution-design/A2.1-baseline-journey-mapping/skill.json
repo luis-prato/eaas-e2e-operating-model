@@ -1,0 +1,36 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A2.1",
+  "slug": "e2e-baseline-journey-mapping",
+  "name": "Baseline Journey Mapping",
+  "fullName": "A2.1 Baseline Journey Mapping",
+  "group": "A2 · Solution Design",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Front Office",
+  "role": "Service Designer",
+  "tags": [
+    "journey-mapping",
+    "baseline",
+    "customer-experience",
+    "as-is"
+  ],
+  "summary": "Document the customer's current asset ownership experience — from procurement through operation and disposal — to establish the baseline your EaaS model must improve on.",
+  "outcomes": [
+    "As-is customer journey map",
+    "Pain point and cost hotspot analysis",
+    "Value gap identification",
+    "Baseline metrics for EaaS comparison"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

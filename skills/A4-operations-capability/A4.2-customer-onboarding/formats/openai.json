@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_customer_onboarding",
+    "description": "[EaaS E2E Operating Model — A4.2 Customer Onboarding] Deliver a structured 90-day onboarding programme that establishes the people, processes, and systems needed for a successful EaaS contract from day one. Outputs: Onboarding programme plan (Week 1 through Month 3); Stakeholder engagement and training schedule; Systems access and integration checklist; 90-day onboarding completion assessment.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "customer_context": {
+          "type": "string",
+          "description": "Customer organisation, site, and key contacts"
+        },
+        "asset_scope": {
+          "type": "string",
+          "description": "Assets being onboarded and operational context"
+        },
+        "go_live_date": {
+          "type": "string",
+          "description": "Contract go-live date"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "customer_context"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A4 · Operations & Capability",
+    "role": "Customer Success Manager",
+    "tags": [
+      "onboarding",
+      "customer-success",
+      "training",
+      "90-day",
+      "go-live"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A4-operations-capability/A4.2-customer-onboarding"
+  }
+}

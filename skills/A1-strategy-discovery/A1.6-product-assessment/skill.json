@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.6",
+  "slug": "e2e-product-assessment",
+  "name": "EaaS Product Assessment",
+  "fullName": "A1.6 EaaS Product Assessment",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Back Office",
+  "role": "Product Manager",
+  "tags": [
+    "product",
+    "portfolio",
+    "suitability",
+    "assessment",
+    "scoring"
+  ],
+  "summary": "Evaluate which products in your portfolio are structurally suited to EaaS — and which are not — using a scoring model across seven dimensions.",
+  "outcomes": [
+    "Product EaaS suitability scorecard",
+    "Portfolio prioritisation for EaaS conversion",
+    "Product readiness gap analysis",
+    "Recommended pilot product selection"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

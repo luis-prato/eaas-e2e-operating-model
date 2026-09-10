@@ -1,0 +1,42 @@
+{
+  "name": "e2e_iot_smart_contracts",
+  "description": "EaaS E2E Operating Model — A5.5 IoT & Smart Contracts. Integrate real-time asset telemetry with automated contract execution — so performance data triggers SLA validation, payment calculation, and operational alerts without manual intervention.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "asset_type": {
+        "type": "STRING",
+        "description": "Asset type and performance KPIs to instrument"
+      },
+      "existing_iot": {
+        "type": "STRING",
+        "description": "Existing IoT infrastructure and connectivity"
+      },
+      "automation_scope": {
+        "type": "STRING",
+        "description": "Automation scope (billing, alerts, work orders, all)"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "asset_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A5.5",
+    "skill_group": "A5 · Performance Management",
+    "skill_role": "Technology Lead",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "iot",
+      "smart-contracts",
+      "automation",
+      "telemetry",
+      "billing",
+      "sensors"
+    ]
+  }
+}

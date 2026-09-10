@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A3.6",
+  "slug": "e2e-bid-preparation",
+  "name": "Bid Preparation",
+  "fullName": "A3.6 Bid Preparation",
+  "group": "A3 · Business Case & Deal",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Front Office",
+  "role": "Bid Manager",
+  "tags": [
+    "bid",
+    "proposal",
+    "win-themes",
+    "differentiators",
+    "review-gate"
+  ],
+  "summary": "Produce a winning EaaS bid — structuring the technical, commercial, and legal response to maximise clarity, differentiation, and evaluator confidence.",
+  "outcomes": [
+    "Bid production process and ownership map",
+    "Proposal structure and quality checklist",
+    "Win theme and differentiator framework",
+    "Review and approval gate process"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

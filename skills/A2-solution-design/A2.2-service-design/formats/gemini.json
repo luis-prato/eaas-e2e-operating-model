@@ -1,0 +1,40 @@
+{
+  "name": "e2e_service_design",
+  "description": "EaaS E2E Operating Model — A2.2 EaaS Service Design. Design the complete EaaS service model — the outcome promise, service components, SLA structure, and customer experience — before commercial documentation begins.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "asset_type": {
+        "type": "STRING",
+        "description": "Asset type and operational context"
+      },
+      "outcome_targets": {
+        "type": "STRING",
+        "description": "Customer outcome ambitions and measurable KPIs"
+      },
+      "service_wrapper": {
+        "type": "STRING",
+        "description": "Support, maintenance, and service components to include"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "asset_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A2.2",
+    "skill_group": "A2 · Solution Design",
+    "skill_role": "Service Designer",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "service-design",
+      "outcome-model",
+      "sla",
+      "customer-experience"
+    ]
+  }
+}

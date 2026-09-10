@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.5",
+  "slug": "e2e-stakeholder-alignment",
+  "name": "Stakeholder Alignment",
+  "fullName": "A1.5 Stakeholder Alignment",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Front Office",
+  "role": "Account Executive",
+  "tags": [
+    "stakeholders",
+    "sales",
+    "champion",
+    "approval",
+    "decision-making"
+  ],
+  "summary": "Map the customer decision-making unit, understand each stakeholder's priorities, and build the internal coalition needed to approve and sustain an EaaS contract.",
+  "outcomes": [
+    "Stakeholder map and influence analysis",
+    "Champion identification and engagement plan",
+    "Objection register with response playbook",
+    "Internal approval pathway documentation"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

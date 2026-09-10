@@ -1,0 +1,41 @@
+{
+  "name": "e2e_stakeholder_alignment",
+  "description": "EaaS E2E Operating Model — A1.5 Stakeholder Alignment. Map the customer decision-making unit, understand each stakeholder's priorities, and build the internal coalition needed to approve and sustain an EaaS contract.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "customer_organisation": {
+        "type": "STRING",
+        "description": "Customer organisation and deal context"
+      },
+      "known_stakeholders": {
+        "type": "STRING",
+        "description": "Names and roles of known stakeholders"
+      },
+      "deal_size": {
+        "type": "STRING",
+        "description": "Approximate contract value and term"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "customer_organisation"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A1.5",
+    "skill_group": "A1 · Strategy & Discovery",
+    "skill_role": "Account Executive",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "stakeholders",
+      "sales",
+      "champion",
+      "approval",
+      "decision-making"
+    ]
+  }
+}

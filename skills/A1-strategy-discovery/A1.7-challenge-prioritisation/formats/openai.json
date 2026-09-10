@@ -1,0 +1,50 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_challenge_prioritisation",
+    "description": "[EaaS E2E Operating Model — A1.7 Challenge Prioritisation] Identify and rank the internal and external barriers to EaaS transition so leadership can allocate resources to the challenges that matter most. Outputs: EaaS barrier register with severity ratings; Prioritised challenge roadmap; Resource allocation recommendations; Executive challenge briefing.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "organisation_context": {
+          "type": "string",
+          "description": "Organisation size, industry, and current business model"
+        },
+        "eaas_ambition": {
+          "type": "string",
+          "description": "Target EaaS scale — pilot, division, or full portfolio"
+        },
+        "known_blockers": {
+          "type": "string",
+          "description": "Any known blockers or constraints already identified"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "organisation_context"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A1 · Strategy & Discovery",
+    "role": "Strategy Lead",
+    "tags": [
+      "barriers",
+      "challenges",
+      "prioritisation",
+      "transformation"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A1-strategy-discovery/A1.7-challenge-prioritisation"
+  }
+}

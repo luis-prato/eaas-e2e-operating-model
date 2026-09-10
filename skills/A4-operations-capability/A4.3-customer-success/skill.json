@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A4.3",
+  "slug": "e2e-customer-success",
+  "name": "Customer Success",
+  "fullName": "A4.3 Customer Success",
+  "group": "A4 · Operations & Capability",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Support",
+  "layer": "Front Office",
+  "role": "Customer Success Manager",
+  "tags": [
+    "customer-success",
+    "renewal",
+    "nps",
+    "account-health",
+    "churn"
+  ],
+  "summary": "Manage the ongoing customer relationship to maximise satisfaction, prevent churn, and build the commercial conditions for contract renewal and expansion.",
+  "outcomes": [
+    "Account health scoring framework",
+    "Customer engagement cadence (monthly/quarterly/annual)",
+    "Value communication and reporting toolkit",
+    "Renewal playbook with 18-month timeline"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

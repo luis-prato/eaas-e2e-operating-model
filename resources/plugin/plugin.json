@@ -1,0 +1,27 @@
+{
+  "name": "eaas-strategy-workshop",
+  "display_name": "EaaS Strategy Workshop",
+  "description": "A complete 13-skill workshop series for designing and implementing Equipment-as-a-Service (EaaS) models for industrial equipment, hardware, and robotics. Covers discovery & context mapping, solution design, stakeholder alignment, product assessment, challenge prioritization, customer segmentation, journey mapping, service design, service blueprinting, capability strategy, implementation blueprint, business case development (product/customer assessment, financial modelling, TCO analysis, pricing selection, and capability matrix), and finance case design (financing mode selection, AaaS refinancing structures, balance sheet impact, usage risk management, financier due diligence, and Order-to-Cash process).",
+  "version": "1.6.0",
+  "author": "Luis Prato",
+  "author_url": "https://luisprato.com",
+  "license": "CC-BY-NC-4.0",
+  "homepage": "https://luisprato.com/resources",
+  "repository": "https://github.com/luisprato/eaas-strategy-workshop",
+  "tags": ["equipment-as-a-service", "EaaS", "circular-economy", "service-design", "hardware", "robotics", "strategy"],
+  "skills": [
+    "skills/eaas-discovery-blueprint.md",
+    "skills/eaas-design-blueprint.md",
+    "skills/eaas-stakeholder-alignment.md",
+    "skills/eaas-product-assessment.md",
+    "skills/eaas-challenge-prioritization.md",
+    "skills/eaas-customer-segment.md",
+    "skills/eaas-baseline-journey.md",
+    "skills/eaas-service-design.md",
+    "skills/eaas-service-blueprint.md",
+    "skills/eaas-capability-strategy.md",
+    "skills/eaas-implementation-blueprint.md",
+    "skills/eaas-business-case.md",
+    "skills/eaas-finance-case.md"
+  ]
+}

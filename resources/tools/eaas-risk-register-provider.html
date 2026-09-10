@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaaS Risk Register — Provider</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #fff; color: #111; font-family: Arial, "Helvetica Neue", sans-serif; font-size: 13px; }
+.page-wrap { max-width: 1100px; margin: 0 auto; padding: 36px 28px 60px; }
+
+.title-block { background: #111; color: #fff; padding: 24px 28px 20px; margin: -36px -28px 28px; }
+.title-block h1 { font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.accent-bar { width: 88px; height: 5px; background: #00FB92; border-radius: 2px; margin-bottom: 8px; }
+.attribution { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.meta-field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 3px; }
+.meta-field input { width: 100%; border: none; border-bottom: 1.5px solid #ddd; padding: 4px 0; font-family: Arial, sans-serif; font-size: 12px; outline: none; }
+.meta-field input:focus { border-bottom-color: #00FB92; }
+
+.legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; font-size: 10.5px; }
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.l-dot { width: 10px; height: 10px; border-radius: 50%; }
+.l-dot.critical { background: #CC0000; }
+.l-dot.high { background: #FF6600; }
+.l-dot.medium { background: #FF9900; }
+.l-dot.low { background: #00c073; }
+
+.scoring-grid { display: grid; grid-template-columns: auto 1fr 1fr 1fr; gap: 1px; background: #ccc; border: 1px solid #ccc; width: fit-content; margin-bottom: 18px; font-size: 10.5px; }
+.sg-cell { background: #fff; padding: 5px 10px; text-align: center; white-space: nowrap; }
+.sg-header { background: #333; color: #fff; font-weight: 700; }
+.sg-critical { background: #CC0000; color: #fff; font-weight: 700; }
+.sg-high { background: #FF6600; color: #fff; font-weight: 700; }
+.sg-medium { background: #FF9900; color: #111; font-weight: 700; }
+.sg-low { background: #e8f8f0; color: #006633; font-weight: 700; }
+
+.section-hdr { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(0,0,0,0.45); margin: 20px 0 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; }
+
+.tbl-wrap { overflow-x: auto; margin-bottom: 10px; }
+table.register { width: 100%; border-collapse: collapse; min-width: 900px; font-size: 11.5px; }
+.register th { background: #111; color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 8px 8px; text-align: left; border: 1px solid #111; white-space: nowrap; }
+.register td { padding: 7px 8px; border: 1px solid rgba(0,0,0,0.1); vertical-align: top; }
+.register tbody tr:nth-child(odd) td { background: #f5f5f5; }
+.register tbody tr:nth-child(even) td { background: #fff; }
+
+.ref-cell { font-weight: 700; color: rgba(0,0,0,0.5); text-align: center; white-space: nowrap; }
+.risk-name { font-weight: 700; color: #111; }
+.phase-cell { text-align: center; color: rgba(0,0,0,0.5); font-size: 10.5px; }
+
+input.score-in {
+  width: 38px; height: 26px; text-align: center;
+  border: 1.5px solid rgba(0,0,0,0.15); border-radius: 3px;
+  font-family: Arial; font-size: 14px; font-weight: 700; color: #111;
+  background: #fff; outline: none;
+}
+input.score-in:focus { border-color: #00FB92; }
+
+.pi-cell { text-align: center; font-weight: 700; font-size: 14px; }
+.rl-cell { text-align: center; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 6px 4px; border-radius: 2px; }
+.rl-cell.critical { background: #CC0000; color: #fff; }
+.rl-cell.high { background: #FF6600; color: #fff; }
+.rl-cell.medium { background: #FF9900; color: #111; }
+.rl-cell.low { background: #e8f8f0; color: #006633; border: 1px solid #b3ecd5; }
+
+.mit-cell { min-width: 180px; }
+.mit-cell [contenteditable] { outline: none; border-bottom: 1px dashed rgba(0,0,0,0.15); min-height: 18px; display: block; }
+.owner-cell [contenteditable], .status-cell [contenteditable] { outline: none; border-bottom: 1px dashed rgba(0,0,0,0.15); display: block; }
+
+.add-btn { margin: 8px 0 20px; padding: 6px 14px; background: #f0f0f0; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
+.add-btn:hover { background: #e0e0e0; }
+
+.btn-row { display: flex; gap: 10px; margin-bottom: 28px; }
+.btn { padding: 8px 18px; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; cursor: pointer; }
+.btn-primary { background: #111; color: #fff; }
+.btn:hover { opacity: 0.8; }
+
+.footer { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 14px; font-size: 10px; color: rgba(0,0,0,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+@media print {
+  body { font-size: 9px; }
+  .page-wrap { max-width: 100%; padding: 12px 16px; }
+  .title-block { margin: -12px -16px 16px; padding: 14px 16px 12px; }
+  .btn-row, .add-btn { display: none; }
+  .register { font-size: 8.5px; }
+  .register th { font-size: 7.5px; padding: 5px 5px; }
+  .register td { padding: 4px 5px; }
+  .title-block, .register th, .rl-cell { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="title-block">
+  <h1>EaaS Risk Register — Provider</h1>
+  <div class="accent-bar"></div>
+  <div class="attribution">EaaS End-to-End Operating Model · v1.24.0 · luisprato.com/resources · Apache 2.0</div>
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>Programme / Contract reference</label><input type="text" placeholder="e.g. Industrial Compressor EaaS — Q3 2026"></div>
+  <div class="meta-field"><label>Assessed by</label><input type="text" placeholder="Name / Role"></div>
+  <div class="meta-field"><label>Date</label><input type="text" placeholder="DD/MM/YYYY"></div>
+</div>
+
+<div class="section-hdr">Risk Scoring Matrix</div>
+<div class="scoring-grid">
+  <div class="sg-cell sg-header"></div>
+  <div class="sg-cell sg-header">Low Consequence (1)</div>
+  <div class="sg-cell sg-header">Mid Consequence (2)</div>
+  <div class="sg-cell sg-header">High Consequence (3)</div>
+  <div class="sg-cell sg-header">High Likelihood (3)</div>
+  <div class="sg-cell sg-medium">Medium (3)</div>
+  <div class="sg-cell sg-high">High (6)</div>
+  <div class="sg-cell sg-critical">Critical (9)</div>
+  <div class="sg-cell sg-header">Mid Likelihood (2)</div>
+  <div class="sg-cell sg-low">Low (2)</div>
+  <div class="sg-cell sg-medium">Medium (4)</div>
+  <div class="sg-cell sg-high">High (6)</div>
+  <div class="sg-cell sg-header">Low Likelihood (1)</div>
+  <div class="sg-cell sg-low">Low (1)</div>
+  <div class="sg-cell sg-low">Low (2)</div>
+  <div class="sg-cell sg-medium">Medium (3)</div>
+</div>
+
+<div class="legend">
+  <span style="color:rgba(0,0,0,0.45);font-size:10px;text-transform:uppercase;letter-spacing:1px">Risk Levels:</span>
+  <div class="legend-item"><div class="l-dot critical"></div>Critical (score 9)</div>
+  <div class="legend-item"><div class="l-dot high"></div>High (score 6)</div>
+  <div class="legend-item"><div class="l-dot medium"></div>Medium (score 3–4)</div>
+  <div class="legend-item"><div class="l-dot low"></div>Low (score 1–2)</div>
+  <span style="color:rgba(0,0,0,0.4);font-size:10.5px">Probability × Impact = Score &nbsp;|&nbsp; 1=Low · 2=Mid · 3=High</span>
+</div>
+
+<div class="section-hdr">Provider Risk Register</div>
+<div class="tbl-wrap">
+<table class="register" id="risk-table">
+  <thead>
+    <tr>
+      <th style="width:40px">REF</th>
+      <th style="min-width:180px">Risk Description</th>
+      <th style="width:60px">Phase</th>
+      <th style="width:44px">Prob (1–3)</th>
+      <th style="width:44px">Impact (1–3)</th>
+      <th style="width:44px">Score</th>
+      <th style="width:70px">Risk Level</th>
+      <th style="min-width:200px">Mitigation Action</th>
+      <th style="width:90px">Owner</th>
+      <th style="width:80px">Status</th>
+    </tr>
+  </thead>
+  <tbody id="risk-body">
+  </tbody>
+</table>
+</div>
+<button class="add-btn" onclick="addRow()">+ Add Risk Row</button>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="footer">
+  <span>EaaS Risk Register — Provider · EaaS End-to-End Operating Model v1.24.0</span>
+  <span>© Luis Prato · Apache 2.0 · luisprato.com/resources</span>
+</div>
+
+</div>
+
+<script>
+const RISKS = [
+  { ref: 'PR-01', name: 'Tech performance risk — HW/SW underperformance', phase: '3', prob: 2, impact: 2, mit: 'Predictive maintenance (IoT/ML); trusted maintenance partner; right equipment fit for customer process' },
+  { ref: 'PR-02', name: 'Hardware / software malfunction', phase: '3', prob: 2, impact: 2, mit: 'Preventive maintenance schedule; spare parts inventory; SLA response/resolution times in contract' },
+  { ref: 'PR-03', name: 'Metering device malfunction', phase: '3', prob: 2, impact: 2, mit: 'Redundant metering; periodic calibration; contractual liability split clause' },
+  { ref: 'PR-04', name: 'Tech provider existential risk (manufacturer insolvency)', phase: '1–3', prob: 1, impact: 3, mit: 'Multi-supplier parts strategy; escrow for software; preferred parts agreements' },
+  { ref: 'PR-05', name: 'Construction and completion risk', phase: '2', prob: 1, impact: 3, mit: 'Performance bond; fixed-price installation sub-contracts; milestone-based payment schedule' },
+  { ref: 'PR-06', name: 'Tech operation risk — supply chain, service team', phase: '2–3', prob: 2, impact: 2, mit: 'Preferred supplier agreements for critical parts; service team SLA; backup technician network' },
+  { ref: 'PR-07', name: 'Procurement / tariff risk', phase: '2', prob: 1, impact: 3, mit: 'Early procurement; hedging; tariff change clause in EaaS contract' },
+  { ref: 'PR-08', name: 'Unanticipated maintenance risk', phase: '3', prob: 1, impact: 2, mit: 'Contingency budget 10–15% of O&M; IoT-enabled anomaly detection; maintenance reserve fund' },
+  { ref: 'PR-09', name: 'Service continuity risk — power outages, interruptions', phase: '3', prob: 1, impact: 3, mit: 'Force majeure clause; business interruption insurance; UPS / generator provision' },
+  { ref: 'PR-10', name: 'Customer change risk — ownership or premises change', phase: '3', prob: 2, impact: 2, mit: 'Change of control clause; contract transfer provisions; equipment removal cost clause' },
+  { ref: 'PR-11', name: 'Counterparty existential risk — customer insolvency', phase: '2–3', prob: 1, impact: 3, mit: 'Credit assessment at onboarding; bank guarantee or parent guarantee; trade credit insurance; termination right after 3 missed payments' },
+  { ref: 'PR-12', name: 'Counterparty demand risk — usage below/above contracted', phase: '3', prob: 1, impact: 2, mit: 'Minimum usage clause; Capacity Charge floor; demand data analysis at pre-tender stage' },
+  { ref: 'PR-13', name: 'Volume / residual value risk — early contract end', phase: '3', prob: 2, impact: 2, mit: 'Early termination fee; depreciation schedule aligned to contract term; robust secondary market for equipment' },
+  { ref: 'PR-14', name: 'Policy / regulatory / accounting risk (IFRS 16 etc.)', phase: '2–3', prob: 1, impact: 3, mit: 'Monitor regulatory environment; indexation clause; legal review at contract renewal' },
+  { ref: 'PR-15', name: 'Energy / utility tariff change', phase: '3', prob: 2, impact: 2, mit: 'Unit Rate indexation formula (60% electricity + 40% CPI); or pass electricity cost to customer' },
+  { ref: 'PR-16', name: 'Inadequate pricing — IRR collapses over time', phase: '1–3', prob: 2, impact: 3, mit: 'Full TCO model (finance + insurance + O&M + HR + contingency); price sensitivity analysis; IoT billing automation' },
+  { ref: 'PR-17', name: 'Credit risk — customer stops paying', phase: '3', prob: 2, impact: 3, mit: 'Transfer credit risk to financier; trade of receivables; credit insurance; bank guarantee; termination rights' },
+  { ref: 'PR-18', name: 'Force majeure', phase: '2–3', prob: 1, impact: 3, mit: 'Explicit force majeure clause; either party termination right; business interruption insurance' },
+  { ref: 'PR-19', name: 'Management risk — insufficient board-level sponsorship', phase: 'All', prob: 0, impact: 0, mit: 'Executive sponsor assigned; EaaS integrated into company strategy; cross-functional team with mandate' },
+];
+
+function riskLevel(score) {
+  if (score >= 9) return { label: 'Critical', cls: 'critical' };
+  if (score >= 6) return { label: 'High', cls: 'high' };
+  if (score >= 3) return { label: 'Medium', cls: 'medium' };
+  if (score >= 1) return { label: 'Low', cls: 'low' };
+  return { label: '—', cls: '' };
+}
+
+function calcScore(prob, impact) {
+  const p = parseInt(prob), i = parseInt(impact);
+  if (isNaN(p) || isNaN(i) || p === 0 || i === 0) return null;
+  return Math.max(1, Math.min(3, p)) * Math.max(1, Math.min(3, i));
+}
+
+function updateRow(row) {
+  const probIn = row.querySelector('.prob-in');
+  const impIn = row.querySelector('.imp-in');
+  const scoreEl = row.querySelector('.pi-cell');
+  const rlEl = row.querySelector('.rl-cell');
+
+  const prob = parseInt(probIn.value);
+  const imp = parseInt(impIn.value);
+  const score = calcScore(prob, imp);
+
+  if (score !== null) {
+    scoreEl.textContent = score;
+    const rl = riskLevel(score);
+    rlEl.textContent = rl.label;
+    rlEl.className = 'rl-cell ' + rl.cls;
+  } else {
+    scoreEl.textContent = '—';
+    rlEl.textContent = '—';
+    rlEl.className = 'rl-cell';
+  }
+}
+
+function makeRow(r, rowFill) {
+  const score = calcScore(r.prob, r.impact);
+  const rl = score !== null ? riskLevel(score) : { label: '—', cls: '' };
+  const tr = document.createElement('tr');
+  tr.innerHTML = `
+    <td class="ref-cell">${r.ref}</td>
+    <td><span class="risk-name">${r.name}</span></td>
+    <td class="phase-cell">${r.phase}</td>
+    <td style="text-align:center"><input class="score-in prob-in" type="number" min="0" max="3" value="${r.prob || ''}" placeholder="1–3"></td>
+    <td style="text-align:center"><input class="score-in imp-in" type="number" min="0" max="3" value="${r.impact || ''}" placeholder="1–3"></td>
+    <td class="pi-cell">${score !== null ? score : '—'}</td>
+    <td><div class="rl-cell ${rl.cls}">${rl.label}</div></td>
+    <td class="mit-cell"><div contenteditable="true">${r.mit || ''}</div></td>
+    <td class="owner-cell"><div contenteditable="true"></div></td>
+    <td class="status-cell"><div contenteditable="true"></div></td>
+  `;
+  const probIn = tr.querySelector('.prob-in');
+  const impIn = tr.querySelector('.imp-in');
+  probIn.addEventListener('input', () => updateRow(tr));
+  impIn.addEventListener('input', () => updateRow(tr));
+  return tr;
+}
+
+function addRow() {
+  const body = document.getElementById('risk-body');
+  const rowNum = body.rows.length + 1;
+  const r = { ref: 'PR-' + String(rowNum).padStart(2,'0'), name: '', phase: '', prob: '', impact: '', mit: '' };
+  body.appendChild(makeRow(r));
+}
+
+const body = document.getElementById('risk-body');
+RISKS.forEach(r => body.appendChild(makeRow(r)));
+</script>
+</body>
+</html>

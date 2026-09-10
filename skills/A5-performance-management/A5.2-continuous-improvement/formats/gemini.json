@@ -1,0 +1,41 @@
+{
+  "name": "e2e_continuous_improvement",
+  "description": "EaaS E2E Operating Model — A5.2 Continuous Improvement. Run a structured PDCA improvement programme that prevents margin erosion, reduces reactive maintenance, and compounds reliability gains across the EaaS portfolio over time.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "portfolio_context": {
+        "type": "STRING",
+        "description": "Contract portfolio size and asset types"
+      },
+      "performance_data": {
+        "type": "STRING",
+        "description": "Current KPI performance vs targets"
+      },
+      "improvement_focus": {
+        "type": "STRING",
+        "description": "Priority improvement areas (cost, reliability, SLA)"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "portfolio_context"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A5.2",
+    "skill_group": "A5 · Performance Management",
+    "skill_role": "Operations Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "continuous-improvement",
+      "pdca",
+      "reliability",
+      "margin",
+      "analytics"
+    ]
+  }
+}

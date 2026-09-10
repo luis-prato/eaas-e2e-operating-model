@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A3.1",
+  "slug": "e2e-business-case",
+  "name": "Business Case",
+  "fullName": "A3.1 Business Case",
+  "group": "A3 · Business Case & Deal",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Back Office",
+  "role": "Commercial Director",
+  "tags": [
+    "business-case",
+    "financial-model",
+    "pl",
+    "residual-value",
+    "scenario"
+  ],
+  "summary": "Build the full EaaS business case — P&L model, cash flow, residual value assumptions, and scenario analysis — to support internal investment approval and customer commercial negotiation.",
+  "outcomes": [
+    "EaaS contract P&L model",
+    "Cash flow and working capital analysis",
+    "Residual value and asset recovery model",
+    "Scenario analysis (base / upside / downside)"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

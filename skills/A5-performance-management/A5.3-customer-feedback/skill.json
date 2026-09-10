@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.3",
+  "slug": "e2e-customer-feedback",
+  "name": "Customer Feedback",
+  "fullName": "A5.3 Customer Feedback",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Improve",
+  "layer": "Front Office",
+  "role": "Customer Success Manager",
+  "tags": [
+    "feedback",
+    "nps",
+    "csat",
+    "ces",
+    "renewal-intent",
+    "voice-of-customer"
+  ],
+  "summary": "Collect, analyse, and act on customer sentiment across transactional, relationship, and unsolicited channels — with NPS, CSAT, and renewal intent as the core metrics.",
+  "outcomes": [
+    "Transactional and relationship feedback framework",
+    "NPS and CSAT measurement programme",
+    "Close-the-loop process (acknowledge → act → confirm)",
+    "Renewal risk flag report"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

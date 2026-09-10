@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A4.5",
+  "slug": "e2e-managing-contracts",
+  "name": "Managing Contracts",
+  "fullName": "A4.5 Managing Contracts",
+  "group": "A4 · Operations & Capability",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Support",
+  "layer": "Middle Office",
+  "role": "Contract Manager",
+  "tags": [
+    "contract-management",
+    "obligations",
+    "invoicing",
+    "variations",
+    "disputes"
+  ],
+  "summary": "Operate live EaaS contracts with rigour — tracking obligations, managing variations, processing invoices, resolving disputes, and maintaining audit-ready records.",
+  "outcomes": [
+    "Contract obligation tracker and alert system",
+    "Change management process (5-step)",
+    "Invoice and credit note workflow",
+    "Dispute resolution and escalation protocol"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

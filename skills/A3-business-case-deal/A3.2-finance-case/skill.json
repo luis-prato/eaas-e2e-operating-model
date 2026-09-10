@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A3.2",
+  "slug": "e2e-finance-case",
+  "name": "Finance Case",
+  "fullName": "A3.2 Finance Case",
+  "group": "A3 · Business Case & Deal",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Back Office",
+  "role": "Finance Director",
+  "tags": [
+    "financing",
+    "balance-sheet",
+    "debt",
+    "wacc",
+    "capital-structure"
+  ],
+  "summary": "Structure the financing model for EaaS asset deployment — evaluating balance sheet, off-balance sheet, and third-party financing options against the contract economics.",
+  "outcomes": [
+    "Financing structure options analysis",
+    "Cost of capital and WACC impact assessment",
+    "Debt covenants and lender requirements review",
+    "Recommended financing structure with rationale"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "e2e_bid_preparation",
+  "description": "EaaS E2E Operating Model — A3.6 Bid Preparation. Produce a winning EaaS bid — structuring the technical, commercial, and legal response to maximise clarity, differentiation, and evaluator confidence.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "tender_requirements": {
+        "type": "STRING",
+        "description": "Customer's tender requirements and evaluation criteria"
+      },
+      "win_themes": {
+        "type": "STRING",
+        "description": "Key differentiators and win themes to emphasise"
+      },
+      "submission_deadline": {
+        "type": "STRING",
+        "description": "Bid submission deadline and page limits"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "tender_requirements"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.6",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Bid Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "bid",
+      "proposal",
+      "win-themes",
+      "differentiators",
+      "review-gate"
+    ]
+  }
+}

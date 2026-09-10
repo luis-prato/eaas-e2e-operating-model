@@ -1,0 +1,40 @@
+{
+  "name": "e2e_design_blueprint",
+  "description": "EaaS E2E Operating Model — A1.4 Design Blueprint. Translate discovery findings into a structured EaaS solution concept — defining the outcome model, asset scope, SLA framework, and service wrapper before commercial development begins.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "discovery_findings": {
+        "type": "STRING",
+        "description": "Summary of discovery phase findings and customer pain points"
+      },
+      "asset_scope": {
+        "type": "STRING",
+        "description": "Assets to be included in the EaaS solution"
+      },
+      "outcome_targets": {
+        "type": "STRING",
+        "description": "Customer-desired outcomes and measurable KPIs"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "discovery_findings"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A1.4",
+    "skill_group": "A1 · Strategy & Discovery",
+    "skill_role": "Solution Designer",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "solution",
+      "design",
+      "sla",
+      "outcome-model"
+    ]
+  }
+}

@@ -1,0 +1,571 @@
+{
+  "schema": "eaas-skill-manifest/1.0",
+  "name": "EaaS E2E Operating Model",
+  "description": "32 skills covering the complete Equipment-as-a-Service end-to-end operating model — from strategy and discovery through performance management and asset return.",
+  "version": "1.24.0",
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "generated_at": "2026-09-10T08:14:59Z",
+  "repository": "https://github.com/luis-prato/eaas-skills",
+  "total_skills": 32,
+  "groups": [
+    "A1 · Strategy & Discovery",
+    "A2 · Solution Design",
+    "A3 · Business Case & Deal",
+    "A4 · Operations & Capability",
+    "A5 · Performance Management"
+  ],
+  "platforms": {
+    "claude_code": "SKILL.md",
+    "cursor": "formats/cursor.md",
+    "openai_agents": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "generic": "formats/generic.md"
+  },
+  "skills": [
+    {
+      "code": "A1.1",
+      "slug": "e2e-data-platform-readiness",
+      "name": "Data Platform Readiness",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Technology Lead",
+      "new": true,
+      "path": "skills/A1-strategy-discovery/A1.1-data-platform-readiness",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.2",
+      "slug": "e2e-technology-stack-assessment",
+      "name": "Technology Stack Assessment",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Technology Lead",
+      "new": true,
+      "path": "skills/A1-strategy-discovery/A1.2-technology-stack-assessment",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.3",
+      "slug": "e2e-discovery-blueprint",
+      "name": "Discovery Blueprint",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Strategy Lead",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.3-discovery-blueprint",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.4",
+      "slug": "e2e-design-blueprint",
+      "name": "Design Blueprint",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Solution Designer",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.4-design-blueprint",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.5",
+      "slug": "e2e-stakeholder-alignment",
+      "name": "Stakeholder Alignment",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Account Executive",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.5-stakeholder-alignment",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.6",
+      "slug": "e2e-product-assessment",
+      "name": "EaaS Product Assessment",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Product Manager",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.6-product-assessment",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.7",
+      "slug": "e2e-challenge-prioritisation",
+      "name": "Challenge Prioritisation",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Strategy Lead",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.7-challenge-prioritisation",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A1.8",
+      "slug": "e2e-customer-segmentation",
+      "name": "Customer Segmentation",
+      "group": "A1 · Strategy & Discovery",
+      "role": "Commercial Director",
+      "new": false,
+      "path": "skills/A1-strategy-discovery/A1.8-customer-segmentation",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A2.1",
+      "slug": "e2e-baseline-journey-mapping",
+      "name": "Baseline Journey Mapping",
+      "group": "A2 · Solution Design",
+      "role": "Service Designer",
+      "new": false,
+      "path": "skills/A2-solution-design/A2.1-baseline-journey-mapping",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A2.2",
+      "slug": "e2e-service-design",
+      "name": "EaaS Service Design",
+      "group": "A2 · Solution Design",
+      "role": "Service Designer",
+      "new": false,
+      "path": "skills/A2-solution-design/A2.2-service-design",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A2.3",
+      "slug": "e2e-service-blueprint",
+      "name": "Service Blueprint",
+      "group": "A2 · Solution Design",
+      "role": "Operations Designer",
+      "new": false,
+      "path": "skills/A2-solution-design/A2.3-service-blueprint",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A2.4",
+      "slug": "e2e-capability-strategy",
+      "name": "Capability Strategy",
+      "group": "A2 · Solution Design",
+      "role": "Operations Director",
+      "new": false,
+      "path": "skills/A2-solution-design/A2.4-capability-strategy",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A2.5",
+      "slug": "e2e-implementation-blueprint",
+      "name": "Implementation Blueprint",
+      "group": "A2 · Solution Design",
+      "role": "Programme Manager",
+      "new": false,
+      "path": "skills/A2-solution-design/A2.5-implementation-blueprint",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.1",
+      "slug": "e2e-business-case",
+      "name": "Business Case",
+      "group": "A3 · Business Case & Deal",
+      "role": "Commercial Director",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.1-business-case",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.2",
+      "slug": "e2e-finance-case",
+      "name": "Finance Case",
+      "group": "A3 · Business Case & Deal",
+      "role": "Finance Director",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.2-finance-case",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.3",
+      "slug": "e2e-tendering-procedure",
+      "name": "Tendering Procedure",
+      "group": "A3 · Business Case & Deal",
+      "role": "Commercial Manager",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.3-tendering-procedure",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.4",
+      "slug": "e2e-risk-assessment",
+      "name": "Risk Assessment",
+      "group": "A3 · Business Case & Deal",
+      "role": "Risk Manager",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.4-risk-assessment",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.5",
+      "slug": "e2e-internal-organisation",
+      "name": "Internal Organisation",
+      "group": "A3 · Business Case & Deal",
+      "role": "Operations Director",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.5-internal-organisation",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.6",
+      "slug": "e2e-bid-preparation",
+      "name": "Bid Preparation",
+      "group": "A3 · Business Case & Deal",
+      "role": "Bid Manager",
+      "new": false,
+      "path": "skills/A3-business-case-deal/A3.6-bid-preparation",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A3.7",
+      "slug": "e2e-digital-contracting-platform",
+      "name": "Digital Contracting Platform",
+      "group": "A3 · Business Case & Deal",
+      "role": "Technology Lead",
+      "new": true,
+      "path": "skills/A3-business-case-deal/A3.7-digital-contracting-platform",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.1",
+      "slug": "e2e-machine-delivery",
+      "name": "Machine Delivery & Installation",
+      "group": "A4 · Operations & Capability",
+      "role": "Operations Manager",
+      "new": false,
+      "path": "skills/A4-operations-capability/A4.1-machine-delivery",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.2",
+      "slug": "e2e-customer-onboarding",
+      "name": "Customer Onboarding",
+      "group": "A4 · Operations & Capability",
+      "role": "Customer Success Manager",
+      "new": true,
+      "path": "skills/A4-operations-capability/A4.2-customer-onboarding",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.3",
+      "slug": "e2e-customer-success",
+      "name": "Customer Success",
+      "group": "A4 · Operations & Capability",
+      "role": "Customer Success Manager",
+      "new": false,
+      "path": "skills/A4-operations-capability/A4.3-customer-success",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.4",
+      "slug": "e2e-contract-clause-bank",
+      "name": "Contract Clause Bank",
+      "group": "A4 · Operations & Capability",
+      "role": "Legal Counsel",
+      "new": false,
+      "path": "skills/A4-operations-capability/A4.4-contract-clause-bank",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.5",
+      "slug": "e2e-managing-contracts",
+      "name": "Managing Contracts",
+      "group": "A4 · Operations & Capability",
+      "role": "Contract Manager",
+      "new": false,
+      "path": "skills/A4-operations-capability/A4.5-managing-contracts",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A4.6",
+      "slug": "e2e-mro-service",
+      "name": "MRO Service",
+      "group": "A4 · Operations & Capability",
+      "role": "Field Service Manager",
+      "new": false,
+      "path": "skills/A4-operations-capability/A4.6-mro-service",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.1",
+      "slug": "e2e-analytics-esg-dashboards",
+      "name": "Analytics & ESG Dashboards",
+      "group": "A5 · Performance Management",
+      "role": "Data & Sustainability Lead",
+      "new": true,
+      "path": "skills/A5-performance-management/A5.1-analytics-esg-dashboards",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.2",
+      "slug": "e2e-continuous-improvement",
+      "name": "Continuous Improvement",
+      "group": "A5 · Performance Management",
+      "role": "Operations Manager",
+      "new": true,
+      "path": "skills/A5-performance-management/A5.2-continuous-improvement",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.3",
+      "slug": "e2e-customer-feedback",
+      "name": "Customer Feedback",
+      "group": "A5 · Performance Management",
+      "role": "Customer Success Manager",
+      "new": false,
+      "path": "skills/A5-performance-management/A5.3-customer-feedback",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.4",
+      "slug": "e2e-performance-monitoring",
+      "name": "Performance Monitoring",
+      "group": "A5 · Performance Management",
+      "role": "Contract Manager",
+      "new": false,
+      "path": "skills/A5-performance-management/A5.4-performance-monitoring",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.5",
+      "slug": "e2e-iot-smart-contracts",
+      "name": "IoT & Smart Contracts",
+      "group": "A5 · Performance Management",
+      "role": "Technology Lead",
+      "new": true,
+      "path": "skills/A5-performance-management/A5.5-iot-smart-contracts",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    },
+    {
+      "code": "A5.6",
+      "slug": "e2e-return-refurbishment",
+      "name": "Return & Refurbishment",
+      "group": "A5 · Performance Management",
+      "role": "Asset Manager",
+      "new": false,
+      "path": "skills/A5-performance-management/A5.6-return-refurbishment",
+      "formats": [
+        "SKILL.md",
+        "skill.json",
+        "formats/openai.json",
+        "formats/gemini.json",
+        "formats/cursor.md",
+        "formats/generic.md"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.8",
+  "slug": "e2e-customer-segmentation",
+  "name": "Customer Segmentation",
+  "fullName": "A1.8 Customer Segmentation",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Front Office",
+  "role": "Commercial Director",
+  "tags": [
+    "segmentation",
+    "icp",
+    "targeting",
+    "commercial",
+    "gtm"
+  ],
+  "summary": "Identify which customer segments are the best candidates for EaaS — based on operational maturity, contract appetite, and outcome alignment — to focus sales effort where conversion is highest.",
+  "outcomes": [
+    "EaaS customer segmentation model",
+    "Ideal Customer Profile for EaaS",
+    "Segment-specific value proposition",
+    "Target account list and prioritisation"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

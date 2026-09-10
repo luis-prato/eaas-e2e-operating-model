@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A3.5",
+  "slug": "e2e-internal-organisation",
+  "name": "Internal Organisation",
+  "fullName": "A3.5 Internal Organisation",
+  "group": "A3 · Business Case & Deal",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Back Office",
+  "role": "Operations Director",
+  "tags": [
+    "governance",
+    "organisation",
+    "raci",
+    "team-design",
+    "centre-of-excellence"
+  ],
+  "summary": "Design the governance structure, team composition, and decision-making cadences required to operate EaaS contracts reliably at scale.",
+  "outcomes": [
+    "EaaS organisational model and RACI",
+    "Governance cadence and escalation framework",
+    "Headcount and capability requirements by scale",
+    "EaaS Centre of Excellence blueprint"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A4.4",
+  "slug": "e2e-contract-clause-bank",
+  "name": "Contract Clause Bank",
+  "fullName": "A4.4 Contract Clause Bank",
+  "group": "A4 · Operations & Capability",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Back Office",
+  "role": "Legal Counsel",
+  "tags": [
+    "contract",
+    "clauses",
+    "legal",
+    "sla",
+    "liability",
+    "termination"
+  ],
+  "summary": "Access a structured library of EaaS-specific contract clauses covering SLA, asset ownership, liability, data, force majeure, and termination — with guidance on risk allocation.",
+  "outcomes": [
+    "EaaS clause library across 7 modules",
+    "Clause risk rating and negotiation guidance",
+    "Customer-friendly vs provider-protective variants",
+    "Contract review and gap analysis checklist"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

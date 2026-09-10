@@ -1,0 +1,36 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A2.3",
+  "slug": "e2e-service-blueprint",
+  "name": "Service Blueprint",
+  "fullName": "A2.3 Service Blueprint",
+  "group": "A2 · Solution Design",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Middle Office",
+  "role": "Operations Designer",
+  "tags": [
+    "service-blueprint",
+    "operations",
+    "process",
+    "swimlane"
+  ],
+  "summary": "Map the full operational model behind the EaaS promise — the frontstage customer interactions, backstage processes, and supporting systems that deliver the contracted outcome.",
+  "outcomes": [
+    "Full service blueprint with swim lanes",
+    "Backstage process specifications",
+    "Technology and system integration map",
+    "Failure point and recovery protocol register"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

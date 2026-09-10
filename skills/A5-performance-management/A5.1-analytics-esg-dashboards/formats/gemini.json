@@ -1,0 +1,42 @@
+{
+  "name": "e2e_analytics_esg_dashboards",
+  "description": "EaaS E2E Operating Model — A5.1 Analytics & ESG Dashboards. Design and deploy the three-tier dashboard architecture that gives operations, customers, and leadership real-time visibility of performance, value, and ESG outcomes.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "audience": {
+        "type": "STRING",
+        "description": "Primary dashboard audience (operations, customers, leadership, investors)"
+      },
+      "asset_type": {
+        "type": "STRING",
+        "description": "Asset type and performance KPIs to display"
+      },
+      "esg_scope": {
+        "type": "STRING",
+        "description": "ESG reporting scope (energy, emissions, circular economy, social)"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "audience"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A5.1",
+    "skill_group": "A5 · Performance Management",
+    "skill_role": "Data & Sustainability Lead",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "analytics",
+      "esg",
+      "dashboards",
+      "reporting",
+      "sustainability",
+      "kpi"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "name": "e2e_contract_clause_bank",
+  "description": "EaaS E2E Operating Model — A4.4 Contract Clause Bank. Access a structured library of EaaS-specific contract clauses covering SLA, asset ownership, liability, data, force majeure, and termination — with guidance on risk allocation.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "contract_type": {
+        "type": "STRING",
+        "description": "Type of EaaS contract and jurisdiction"
+      },
+      "negotiation_context": {
+        "type": "STRING",
+        "description": "Negotiation stage and counterparty position"
+      },
+      "risk_allocation": {
+        "type": "STRING",
+        "description": "Provider vs customer risk allocation preferences"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "contract_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A4.4",
+    "skill_group": "A4 · Operations & Capability",
+    "skill_role": "Legal Counsel",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "contract",
+      "clauses",
+      "legal",
+      "sla",
+      "liability",
+      "termination"
+    ]
+  }
+}

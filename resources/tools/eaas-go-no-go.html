@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaaS Go/No-Go Decision Framework</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #fff; color: #111; font-family: Arial, "Helvetica Neue", sans-serif; font-size: 13px; }
+.page-wrap { max-width: 960px; margin: 0 auto; padding: 36px 28px 60px; }
+
+.title-block { background: #111; color: #fff; padding: 24px 28px 20px; margin: -36px -28px 28px; }
+.title-block h1 { font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.accent-bar { width: 88px; height: 5px; background: #00FB92; border-radius: 2px; margin-bottom: 8px; }
+.attribution { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.meta-field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 3px; }
+.meta-field input { width: 100%; border: none; border-bottom: 1.5px solid #ddd; padding: 4px 0; font-family: Arial, sans-serif; font-size: 12px; outline: none; }
+.meta-field input:focus { border-bottom-color: #00FB92; }
+
+.section-hdr { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(0,0,0,0.45); margin: 20px 0 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; }
+
+/* Decision dimensions */
+.dim-card { border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; margin-bottom: 12px; overflow: hidden; }
+.dim-card.rated-green { border-color: #00a863; }
+.dim-card.rated-amber { border-color: #CC7700; }
+.dim-card.rated-red   { border-color: #CC0000; }
+
+.dim-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: #f5f5f5; gap: 12px; }
+.dim-header.rated-green { background: #f0fff8; }
+.dim-header.rated-amber { background: #fff8f0; }
+.dim-header.rated-red   { background: #fff0f0; }
+
+.dim-num { font-size: 10px; font-weight: 700; color: rgba(0,0,0,0.3); min-width: 24px; }
+.dim-name { font-weight: 700; font-size: 13px; color: #111; flex: 1; }
+
+/* Traffic light selector */
+.rag-selector { display: flex; gap: 6px; align-items: center; }
+.rag-btn {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(0,0,0,0.15);
+  cursor: pointer; font-size: 0; transition: transform 0.1s, border-color 0.1s;
+  flex-shrink: 0;
+}
+.rag-btn:hover { transform: scale(1.15); }
+.rag-btn.red   { background: #CC0000; }
+.rag-btn.amber { background: #FF9900; }
+.rag-btn.green { background: #00a863; }
+.rag-btn.active { border-color: #111; border-width: 3px; transform: scale(1.1); }
+.rag-btn:not(.active) { opacity: 0.35; }
+.rag-btn:not(.active):hover { opacity: 0.7; }
+
+.dim-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.dim-col { padding: 10px 14px; }
+.dim-col:first-child { border-right: 1px solid rgba(0,0,0,0.07); }
+.crit-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 5px; font-weight: 700; }
+.crit-label.go-lbl   { color: #006633; }
+.crit-label.nogo-lbl { color: #880000; }
+.crit-text { font-size: 11.5px; color: #333; line-height: 1.5; }
+
+.dim-notes { padding: 8px 14px 10px; border-top: 1px solid rgba(0,0,0,0.06); }
+.notes-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.35); margin-bottom: 3px; }
+.notes-in [contenteditable] { font-size: 11.5px; color: #111; min-height: 18px; outline: none; border-bottom: 1px dashed rgba(0,0,0,0.15); display: block; }
+
+/* Rating indicator on card */
+.dim-rating-badge {
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 2px 7px; border-radius: 3px; opacity: 0; transition: opacity 0.2s;
+}
+.dim-rating-badge.visible { opacity: 1; }
+.dim-rating-badge.red   { background: #CC0000; color: #fff; }
+.dim-rating-badge.amber { background: #FF9900; color: #111; }
+.dim-rating-badge.green { background: #00a863; color: #fff; }
+
+/* Decision summary */
+.decision-summary {
+  border: 2px solid rgba(0,0,0,0.1); border-radius: 4px; padding: 16px 20px;
+  margin: 20px 0; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.decision-summary.go    { border-color: #00a863; background: #f0fff8; }
+.decision-summary.cgo   { border-color: #CC7700; background: #fff8f0; }
+.decision-summary.nogo  { border-color: #CC0000; background: #fff0f0; }
+
+.rag-counts { display: flex; gap: 16px; }
+.rag-count-item { text-align: center; }
+.rag-count-num { font-size: 28px; font-weight: 700; line-height: 1; display: block; }
+.rag-count-num.red   { color: #CC0000; }
+.rag-count-num.amber { color: #CC7700; }
+.rag-count-num.green { color: #00a863; }
+.rag-count-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(0,0,0,0.4); }
+
+.decision-verdict { text-align: right; }
+.verdict-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
+.verdict-text { font-size: 22px; font-weight: 700; color: #111; }
+.verdict-text.go    { color: #00a863; }
+.verdict-text.cgo   { color: #CC7700; }
+.verdict-text.nogo  { color: #CC0000; }
+.verdict-rule { font-size: 11px; color: rgba(0,0,0,0.4); margin-top: 4px; }
+
+/* Decision Brief section */
+.brief-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.brief-field label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 3px; display: block; }
+.brief-field input { width: 100%; border: none; border-bottom: 1.5px solid #ddd; padding: 4px 0; font-family: Arial; font-size: 12px; outline: none; }
+.brief-field input:focus { border-bottom-color: #00FB92; }
+
+.conditions-area { width: 100%; min-height: 60px; border: 1px solid rgba(0,0,0,0.1); border-top: 3px solid #00FB92; background: #f9f9f9; padding: 10px; font-family: Arial; font-size: 12px; color: #111; outline: none; resize: vertical; }
+
+/* Sequence checklist */
+.sequence-list { counter-reset: seq; }
+.seq-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; font-size: 11.5px; color: rgba(0,0,0,0.7); }
+.seq-num { background: #111; color: #fff; font-weight: 700; font-size: 10px; border-radius: 50%; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+.btn-row { display: flex; gap: 10px; margin: 20px 0; }
+.btn { padding: 8px 18px; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; cursor: pointer; }
+.btn-primary { background: #111; color: #fff; }
+.btn-secondary { background: #f0f0f0; color: #111; }
+.btn:hover { opacity: 0.8; }
+
+.footer { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 14px; font-size: 10px; color: rgba(0,0,0,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+@media print {
+  body { font-size: 9px; }
+  .page-wrap { max-width: 100%; padding: 12px 16px; }
+  .title-block { margin: -12px -16px 16px; padding: 14px 16px 12px; }
+  .btn-row { display: none; }
+  .title-block, .rag-btn.active, .dim-header, .decision-summary, .verdict-text, .dim-rating-badge { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="title-block">
+  <h1>EaaS Go/No-Go Decision Framework</h1>
+  <div class="accent-bar"></div>
+  <div class="attribution">EaaS End-to-End Operating Model · v1.24.0 · luisprato.com/resources · Apache 2.0</div>
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>Opportunity / Tender Name</label><input type="text" placeholder="Customer name or project code"></div>
+  <div class="meta-field"><label>Decision Owner</label><input type="text" placeholder="Name / Role"></div>
+  <div class="meta-field"><label>Decision Date</label><input type="text" placeholder="DD/MM/YYYY"></div>
+</div>
+
+<div class="section-hdr">Decision Protocol</div>
+<div class="sequence-list">
+  <div class="seq-item"><div class="seq-num">1</div><span>Complete all prior parts — contract positioning, pre-tender readiness, SLA design, risk register</span></div>
+  <div class="seq-item"><div class="seq-num">2</div><span>Rate each of the 5 dimensions below: <strong>Red / Amber / Green</strong> (click the traffic light circles)</span></div>
+  <div class="seq-item"><div class="seq-num">3</div><span>Apply the decision rules: Any Red = No-Go · Three or more Ambers = Conditional Go · All Green or one Amber = Go</span></div>
+  <div class="seq-item"><div class="seq-num">4</div><span>Complete the Decision Brief below — record approver, conditions, and review gate date</span></div>
+</div>
+
+<div class="section-hdr" style="margin-top:24px">5 Evaluation Dimensions</div>
+<div id="dims-container"></div>
+
+<div class="section-hdr">Decision Summary</div>
+<div class="decision-summary" id="decision-block">
+  <div class="rag-counts">
+    <div class="rag-count-item"><span class="rag-count-num red" id="count-red">0</span><span class="rag-count-lbl">Red</span></div>
+    <div class="rag-count-item"><span class="rag-count-num amber" id="count-amber">0</span><span class="rag-count-lbl">Amber</span></div>
+    <div class="rag-count-item"><span class="rag-count-num green" id="count-green">0</span><span class="rag-count-lbl">Green</span></div>
+  </div>
+  <div class="decision-verdict">
+    <div class="verdict-label">Verdict</div>
+    <div class="verdict-text" id="verdict">Rate all 5 dimensions</div>
+    <div class="verdict-rule" id="verdict-rule"></div>
+  </div>
+</div>
+
+<div class="section-hdr">Go/No-Go Decision Brief</div>
+<div class="brief-grid">
+  <div class="brief-field"><label>Opportunity Summary</label><input type="text" placeholder="Brief description of the tender / customer"></div>
+  <div class="brief-field"><label>Final Decision</label><input type="text" id="decision-input" placeholder="Go / Conditional Go / No-Go" readonly style="font-weight:700;color:#111"></div>
+  <div class="brief-field"><label>Named Approver</label><input type="text" placeholder="Name, Title, Date"></div>
+  <div class="brief-field"><label>Review Gate Date (if Conditional Go)</label><input type="text" placeholder="DD/MM/YYYY — date to verify conditions before submission"></div>
+</div>
+<div class="notes-lbl" style="margin-bottom:4px">Conditions Attached / Remediation Plan (if Conditional Go or No-Go)</div>
+<textarea class="conditions-area" placeholder="List any conditions that must be met before submission. Name the owner and deadline for each. E.g. 'Risk PR-16 (Inadequate pricing): CFO to approve full TCO model by 15/01/2026 before bid submission.'"></textarea>
+
+<div class="btn-row" style="margin-top:20px">
+  <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+  <button class="btn btn-secondary" onclick="resetAll()">Reset All Ratings</button>
+</div>
+
+<div class="footer">
+  <span>EaaS Go/No-Go Decision Framework · EaaS End-to-End Operating Model v1.24.0</span>
+  <span>© Luis Prato · Apache 2.0 · luisprato.com/resources</span>
+</div>
+
+</div>
+
+<script>
+const DIMS = [
+  {
+    name: 'Strategic Fit',
+    go: 'Opportunity aligns with target verticals and EaaS model type. Client is open to outcome-based contracting.',
+    nogo: 'Client insists on cost-plus model. No appetite for outcome-based contracting or performance SLAs.'
+  },
+  {
+    name: 'Risk Profile',
+    go: 'No unmitigated Red risks. Mitigation strategies are funded, documented, and assigned to named owners.',
+    nogo: 'Unmitigated counterparty existential or force majeure risk present in a high-risk geography or client profile.'
+  },
+  {
+    name: 'Capability Match',
+    go: 'Internal service, monitoring, and billing capabilities confirmed. MTTR and SLA obligations are achievable.',
+    nogo: 'MTTR obligations exceed current service team capacity. Billing or IoT metering not yet operational.'
+  },
+  {
+    name: 'Financial Viability',
+    go: 'Unit economics are positive at the contracted utilization floor. IRR target met at minimum SLA performance.',
+    nogo: 'Pricing falls below break-even at minimum SLA performance threshold. IRR target not achievable.'
+  },
+  {
+    name: 'Internal Alignment',
+    go: 'Board-level sponsor confirmed. Cross-functional team (sales, finance, legal, ops) committed and resourced.',
+    nogo: 'No internal champion. Finance or legal department is blocking the EaaS model structurally.'
+  }
+];
+
+const ratings = Array(DIMS.length).fill(null);
+
+function buildDims() {
+  const container = document.getElementById('dims-container');
+  DIMS.forEach((d, i) => {
+    const card = document.createElement('div');
+    card.className = 'dim-card';
+    card.id = 'dim-' + i;
+    card.innerHTML = `
+      <div class="dim-header" id="dim-hdr-${i}">
+        <span class="dim-num">${String(i+1).padStart(2,'0')}</span>
+        <span class="dim-name">${d.name}</span>
+        <span class="dim-rating-badge" id="badge-${i}"></span>
+        <div class="rag-selector">
+          <button class="rag-btn red" title="Red — No-Go signal" onclick="rate(${i}, 'red')"></button>
+          <button class="rag-btn amber" title="Amber — Conditional signal" onclick="rate(${i}, 'amber')"></button>
+          <button class="rag-btn green" title="Green — Go signal" onclick="rate(${i}, 'green')"></button>
+        </div>
+      </div>
+      <div class="dim-body">
+        <div class="dim-col">
+          <div class="crit-label go-lbl">✓ Go Criteria</div>
+          <div class="crit-text">${d.go}</div>
+        </div>
+        <div class="dim-col">
+          <div class="crit-label nogo-lbl">✗ No-Go Signals</div>
+          <div class="crit-text">${d.nogo}</div>
+        </div>
+      </div>
+      <div class="dim-notes">
+        <div class="notes-lbl">Assessment Notes</div>
+        <div class="notes-in"><div contenteditable="true" placeholder="Record specific evidence, context, or conditions for this dimension..."></div></div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+
+  // Placeholder styling
+  document.querySelectorAll('[contenteditable][placeholder]').forEach(el => {
+    const ph = el.getAttribute('placeholder');
+    if (!el.textContent.trim()) el.style.color = '#aaa';
+    el.addEventListener('focus', () => { if (!el.textContent.trim()) { el.textContent = ''; el.style.color = '#111'; } });
+    el.addEventListener('blur', () => {
+      if (!el.textContent.trim()) { el.style.color = '#aaa'; el.textContent = ''; el.style.color = '#aaa'; }
+    });
+  });
+}
+
+function rate(idx, color) {
+  ratings[idx] = color;
+  const card = document.getElementById('dim-' + idx);
+  const hdr = document.getElementById('dim-hdr-' + idx);
+  const badge = document.getElementById('badge-' + idx);
+  const btns = card.querySelectorAll('.rag-btn');
+
+  // Remove all active states
+  card.className = 'dim-card rated-' + color;
+  hdr.className = 'dim-header rated-' + color;
+
+  btns.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.classList.contains(color)) btn.classList.add('active');
+  });
+
+  const labels = { red: 'Red', amber: 'Amber', green: 'Green' };
+  badge.textContent = labels[color];
+  badge.className = 'dim-rating-badge visible ' + color;
+
+  updateDecision();
+}
+
+function updateDecision() {
+  const counts = { red: 0, amber: 0, green: 0, null: 0 };
+  ratings.forEach(r => counts[r === null ? 'null' : r]++);
+
+  document.getElementById('count-red').textContent = counts.red;
+  document.getElementById('count-amber').textContent = counts.amber;
+  document.getElementById('count-green').textContent = counts.green;
+
+  const verdictEl = document.getElementById('verdict');
+  const ruleEl = document.getElementById('verdict-rule');
+  const block = document.getElementById('decision-block');
+  const decInput = document.getElementById('decision-input');
+
+  if (counts.null > 0) {
+    verdictEl.textContent = 'Rate all 5 dimensions';
+    verdictEl.className = 'verdict-text';
+    ruleEl.textContent = '';
+    block.className = 'decision-summary';
+    decInput.value = '';
+    return;
+  }
+
+  let verdict, cls, rule;
+  if (counts.red > 0) {
+    verdict = 'No-Go';
+    cls = 'nogo';
+    rule = 'Any Red = No-Go unless leadership approves a remediation plan';
+  } else if (counts.amber >= 3) {
+    verdict = 'Conditional Go';
+    cls = 'cgo';
+    rule = 'Three or more Ambers = Conditional Go — require explicit risk owner sign-offs';
+  } else {
+    verdict = 'Go';
+    cls = 'go';
+    rule = 'All Green or ≤1 Amber = Go — proceed with bid preparation';
+  }
+
+  verdictEl.textContent = verdict;
+  verdictEl.className = 'verdict-text ' + cls;
+  ruleEl.textContent = rule;
+  block.className = 'decision-summary ' + cls;
+  decInput.value = verdict;
+}
+
+function resetAll() {
+  ratings.fill(null);
+  document.querySelectorAll('.dim-card').forEach((card, i) => {
+    card.className = 'dim-card';
+    document.getElementById('dim-hdr-' + i).className = 'dim-header';
+    document.getElementById('badge-' + i).className = 'dim-rating-badge';
+    card.querySelectorAll('.rag-btn').forEach(b => b.classList.remove('active'));
+  });
+  updateDecision();
+}
+
+buildDims();
+updateDecision();
+</script>
+</body>
+</html>

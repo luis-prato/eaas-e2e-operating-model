@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.1",
+  "slug": "e2e-data-platform-readiness",
+  "name": "Data Platform Readiness",
+  "fullName": "A1.1 Data Platform Readiness",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Discover",
+  "layer": "Shared Platforms",
+  "role": "Technology Lead",
+  "tags": [
+    "data",
+    "infrastructure",
+    "iot",
+    "esg",
+    "readiness"
+  ],
+  "summary": "Assess whether your data infrastructure can support real-time asset monitoring, automated SLA calculation, and ESG reporting before an EaaS contract goes live.",
+  "outcomes": [
+    "Data readiness audit across six dimensions",
+    "Gap remediation roadmap with cost estimates",
+    "Go/no-go recommendation for EaaS deployment",
+    "Data governance framework for IoT and operational data"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

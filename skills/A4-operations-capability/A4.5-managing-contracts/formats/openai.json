@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_managing_contracts",
+    "description": "[EaaS E2E Operating Model — A4.5 Managing Contracts] Operate live EaaS contracts with rigour — tracking obligations, managing variations, processing invoices, resolving disputes, and maintaining audit-ready records. Outputs: Contract obligation tracker and alert system; Change management process (5-step); Invoice and credit note workflow; Dispute resolution and escalation protocol.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "contract_reference": {
+          "type": "string",
+          "description": "Contract reference and key terms"
+        },
+        "management_challenge": {
+          "type": "string",
+          "description": "Specific contract management challenge or task"
+        },
+        "period": {
+          "type": "string",
+          "description": "Reporting or management period"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "contract_reference"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A4 · Operations & Capability",
+    "role": "Contract Manager",
+    "tags": [
+      "contract-management",
+      "obligations",
+      "invoicing",
+      "variations",
+      "disputes"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A4-operations-capability/A4.5-managing-contracts"
+  }
+}

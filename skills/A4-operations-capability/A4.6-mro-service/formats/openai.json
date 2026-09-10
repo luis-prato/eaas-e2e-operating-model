@@ -1,0 +1,52 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_mro_service",
+    "description": "[EaaS E2E Operating Model — A4.6 MRO Service] Deliver preventive and reactive maintenance operations that protect SLA performance and residual asset value — with KPI-driven field service and parts management. Outputs: PM and reactive maintenance playbook; MRO KPI framework (MTTR, MTBF, First-Time Fix); Spare parts strategy and inventory model; Field service dispatch and routing process.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "asset_type": {
+          "type": "string",
+          "description": "Asset type and failure mode profile"
+        },
+        "fleet_size": {
+          "type": "string",
+          "description": "Number of assets under maintenance"
+        },
+        "sla_requirements": {
+          "type": "string",
+          "description": "SLA uptime and response time requirements"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "asset_type"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A4 · Operations & Capability",
+    "role": "Field Service Manager",
+    "tags": [
+      "mro",
+      "maintenance",
+      "field-service",
+      "mttr",
+      "mtbf",
+      "spare-parts"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A4-operations-capability/A4.6-mro-service"
+  }
+}

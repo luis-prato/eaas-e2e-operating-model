@@ -1,0 +1,45 @@
+{
+  "name": "e2e_finance_case",
+  "description": "EaaS E2E Operating Model — A3.2 Finance Case. Structure the financing model for EaaS asset deployment — evaluating balance sheet, off-balance sheet, and third-party financing options against the contract economics.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "asset_investment": {
+        "type": "STRING",
+        "description": "Total asset investment required for the contract portfolio"
+      },
+      "contract_cashflows": {
+        "type": "STRING",
+        "description": "Expected monthly/annual cashflow profile"
+      },
+      "balance_sheet_constraints": {
+        "type": "STRING",
+        "description": "Any balance sheet or leverage constraints"
+      },
+      "financing_preferences": {
+        "type": "STRING",
+        "description": "Preference for on or off balance sheet treatment"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "asset_investment"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.2",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Finance Director",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "financing",
+      "balance-sheet",
+      "debt",
+      "wacc",
+      "capital-structure"
+    ]
+  }
+}

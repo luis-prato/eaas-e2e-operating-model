@@ -1,0 +1,41 @@
+{
+  "name": "e2e_tendering_procedure",
+  "description": "EaaS E2E Operating Model — A3.3 Tendering Procedure. Manage the EaaS tendering process — from RFI/RFP response through to preferred bidder selection — with qualification criteria, scoring models, and negotiation strategy.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "tender_type": {
+        "type": "STRING",
+        "description": "Type of tender (RFI, RFP, ITT, competitive dialogue)"
+      },
+      "customer_requirements": {
+        "type": "STRING",
+        "description": "Customer's stated requirements and evaluation criteria"
+      },
+      "competitive_context": {
+        "type": "STRING",
+        "description": "Known competitors and competitive dynamics"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "tender_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.3",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Commercial Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "tendering",
+      "rfp",
+      "bid",
+      "procurement",
+      "qualification"
+    ]
+  }
+}

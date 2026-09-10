@@ -1,0 +1,50 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_capability_strategy",
+    "description": "[EaaS E2E Operating Model — A2.4 Capability Strategy] Define the operational capabilities your organisation must build, buy, or partner for to deliver EaaS at scale — and sequence the capability build in line with contract pipeline. Outputs: EaaS capability maturity assessment; Build/buy/partner decision framework; Capability development roadmap; Partner and supplier strategy.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "current_capabilities": {
+          "type": "string",
+          "description": "Existing operational capabilities and gaps"
+        },
+        "target_scale": {
+          "type": "string",
+          "description": "Target number of contracts and asset types"
+        },
+        "timeline": {
+          "type": "string",
+          "description": "Timeline to first contract and scale targets"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "current_capabilities"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A2 · Solution Design",
+    "role": "Operations Director",
+    "tags": [
+      "capability",
+      "build-buy-partner",
+      "operations",
+      "scaling"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A2-solution-design/A2.4-capability-strategy"
+  }
+}

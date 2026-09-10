@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaaS OBC SLA Design Table</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #fff; color: #111; font-family: Arial, "Helvetica Neue", sans-serif; font-size: 13px; }
+.page-wrap { max-width: 1200px; margin: 0 auto; padding: 36px 28px 60px; }
+
+.title-block { background: #111; color: #fff; padding: 24px 28px 20px; margin: -36px -28px 28px; }
+.title-block h1 { font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.accent-bar { width: 88px; height: 5px; background: #00FB92; border-radius: 2px; margin-bottom: 8px; }
+.attribution { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.meta-field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 3px; }
+.meta-field input { width: 100%; border: none; border-bottom: 1.5px solid #ddd; padding: 4px 0; font-family: Arial, sans-serif; font-size: 12px; outline: none; }
+.meta-field input:focus { border-bottom-color: #00FB92; }
+
+.section-hdr { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(0,0,0,0.45); margin: 20px 0 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; }
+
+/* Principles box */
+.principles { border-left: 3px solid #00FB92; background: #f9f9f9; padding: 10px 14px; margin-bottom: 18px; font-size: 11.5px; color: rgba(0,0,0,0.65); line-height: 1.6; }
+.principles strong { color: #111; }
+
+/* SLA Table */
+.tbl-wrap { overflow-x: auto; margin-bottom: 12px; }
+table.sla { width: 100%; border-collapse: collapse; min-width: 1100px; }
+.sla th { background: #111; color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; padding: 8px; border: 1px solid #111; text-align: left; }
+.sla td { padding: 0; border: 1px solid rgba(0,0,0,0.1); vertical-align: top; }
+
+/* Objective row header */
+.obj-row td { background: #333 !important; }
+.obj-num { display: inline-block; background: #00FB92; color: #111; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 2px; margin-right: 5px; }
+.obj-name { font-weight: 700; font-size: 12px; color: #fff; padding: 8px 10px; }
+
+/* Data rows */
+.sla-row td { background: #f5f5f5; }
+.sla-row.alt td { background: #fff; }
+
+.col-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(0,0,0,0.35); display: block; margin-bottom: 3px; font-weight: 700; padding: 6px 8px 2px; }
+.col-val { font-size: 11.5px; color: #111; padding: 0 8px 6px; line-height: 1.45; }
+
+/* Editable overlay */
+[contenteditable] { outline: none; min-height: 14px; }
+[contenteditable]:focus { border-radius: 2px; box-shadow: 0 0 0 2px rgba(0,251,146,0.3); }
+.placeholder-text { color: rgba(0,0,0,0.25); font-style: italic; }
+
+/* Baseline flag */
+.baseline-flag { font-size: 10px; background: #fff3cd; color: #856404; border: 1px solid #ffc107; padding: 2px 6px; border-radius: 2px; display: inline-block; margin-top: 4px; }
+
+/* Column widths via th */
+.sla th:nth-child(1) { width: 155px; } /* Objective */
+.sla th:nth-child(2) { width: 120px; } /* KPI */
+.sla th:nth-child(3) { width: 145px; } /* Target */
+.sla th:nth-child(4) { width: 165px; } /* Verification */
+.sla th:nth-child(5) { width: 185px; } /* Payment Logic */
+.sla th:nth-child(6) { min-width: 150px; } /* Remedy */
+
+.add-btn { margin: 8px 0 20px; padding: 6px 14px; background: #f0f0f0; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
+.add-btn:hover { background: #e0e0e0; }
+
+/* SLA toggle (in/out of scope) */
+.scope-toggle { display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+.scope-lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(0,0,0,0.4); }
+.scope-badge { font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: 3px; cursor: pointer; }
+.scope-badge.in  { background: #e8f8f0; color: #006633; border: 1px solid #b3ecd5; }
+.scope-badge.out { background: #f0f0f0; color: #888; border: 1px solid #ddd; }
+
+/* Print */
+@media print {
+  body { font-size: 8px; }
+  .page-wrap { max-width: 100%; padding: 8px 10px; }
+  .title-block { margin: -8px -10px 12px; padding: 10px 12px; }
+  .btn-row { display: none; }
+  .sla { font-size: 7.5px; min-width: unset; }
+  .sla th { font-size: 7px; padding: 4px; }
+  .col-label { font-size: 7px; }
+  .col-val { font-size: 7.5px; }
+  .obj-name { font-size: 9px; }
+  .title-block, .sla th, .obj-row td { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+.btn-row { display: flex; gap: 10px; margin: 16px 0; }
+.btn { padding: 8px 18px; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; cursor: pointer; }
+.btn-primary { background: #111; color: #fff; }
+.btn:hover { opacity: 0.8; }
+
+.footer { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 14px; font-size: 10px; color: rgba(0,0,0,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="title-block">
+  <h1>EaaS OBC SLA Design Table</h1>
+  <div class="accent-bar"></div>
+  <div class="attribution">EaaS End-to-End Operating Model · v1.24.0 · luisprato.com/resources · Apache 2.0</div>
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>Customer / Opportunity</label><input type="text" placeholder="Customer name or project code"></div>
+  <div class="meta-field"><label>Equipment / System</label><input type="text" placeholder="Equipment or product name"></div>
+  <div class="meta-field"><label>Contract Term</label><input type="text" placeholder="e.g. 5 years (2026–2031)"></div>
+  <div class="meta-field"><label>SLA Author / Date</label><input type="text" placeholder="Name · DD/MM/YYYY"></div>
+</div>
+
+<div class="section-hdr">SLA Design Principles</div>
+<div class="principles">
+  <strong>Baseline first</strong> — All targets must reference a measured baseline. Never set targets without measurement data. &nbsp;|&nbsp;
+  <strong>Measurement before contract</strong> — Agree on verification method before signing. Measurement disputes are the #1 source of EaaS contract failure. &nbsp;|&nbsp;
+  <strong>Bonus/penalty symmetry</strong> — If the provider can earn a bonus, they should bear a proportional penalty. &nbsp;|&nbsp;
+  <strong>Force majeure carve-outs</strong> — Exclude customer-caused downtime, planned shutdowns, and external supply disruptions. &nbsp;|&nbsp;
+  <strong>Remedy ladder</strong> — Service credit first → corrective action plan → termination right for persistent failure.
+</div>
+
+<div class="section-hdr">Outcome Objectives & SLA Design</div>
+<div class="tbl-wrap">
+<table class="sla" id="sla-table">
+  <thead>
+    <tr>
+      <th>Outcome Objective</th>
+      <th>KPI</th>
+      <th>Target / Threshold</th>
+      <th>Verification Method</th>
+      <th>Payment Logic</th>
+      <th>Remedy if Missed</th>
+    </tr>
+  </thead>
+  <tbody id="sla-body">
+  </tbody>
+</table>
+</div>
+
+<button class="add-btn" onclick="addRow()">+ Add Custom Objective</button>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="footer">
+  <span>EaaS OBC SLA Design Table · EaaS End-to-End Operating Model v1.24.0</span>
+  <span>© Luis Prato · Apache 2.0 · luisprato.com/resources</span>
+</div>
+
+</div>
+
+<script>
+const OBJECTIVES = [
+  {
+    name: 'Asset Availability',
+    kpi: 'Uptime',
+    target: '≥98.5% monthly',
+    verification: 'Machine telemetry + maintenance log',
+    payment: 'Full fee at threshold; pro-rata deduction below threshold',
+    remedy: 'Service credit; mandatory corrective action plan within 5 business days'
+  },
+  {
+    name: 'Production Capacity',
+    kpi: 'Throughput',
+    target: '≥120 units/hour (illustrative)',
+    verification: 'MES system or line counter; monthly report',
+    payment: 'Bonus above target; deduction below threshold',
+    remedy: 'Re-tuning and recalibration at supplier cost; re-acceptance test'
+  },
+  {
+    name: 'Process Efficiency',
+    kpi: 'Cycle time per unit',
+    target: '≤30 sec/unit (illustrative)',
+    verification: 'PLC timestamps; automated cycle time log',
+    payment: 'Shared savings formula if sustained over rolling 3-month period',
+    remedy: 'Temporary fee holdback until KPI restored to target band'
+  },
+  {
+    name: 'Quality Output',
+    kpi: 'First-Pass Yield (FPY) / Defect rate',
+    target: '≥99.2% FPY or ≤0.8% defect rate',
+    verification: 'QA system + monthly sample audit by independent verifier',
+    payment: 'Final acceptance payment contingent on quality window',
+    remedy: 'Rework and replacement obligations at no additional cost to customer'
+  },
+  {
+    name: 'Service Responsiveness',
+    kpi: 'MTTR (Mean Time To Repair)',
+    target: '≤2 hrs remote triage; ≤8 hrs onsite response',
+    verification: 'Ticketing system + incident timestamps; monthly MTTR report',
+    payment: 'Portion of fee tied to MTTR compliance; penalty per hour of excess delay',
+    remedy: 'Escalating service credits per hour of delay beyond threshold'
+  },
+  {
+    name: 'Energy / Operating Cost',
+    kpi: 'kWh/unit or cost/unit',
+    target: 'Baseline minus agreed % improvement (set at contract signing)',
+    verification: 'Smart metering + production records; quarterly reconciliation',
+    payment: 'Shared savings formula if improvement exceeded; baseline reset on underperformance',
+    remedy: 'Contract change order to reset baseline; or partial fee holdback'
+  }
+];
+
+let customCount = 0;
+
+function makeSlaRow(obj, idx, isCustom = false) {
+  const alt = idx % 2 === 0 ? '' : 'alt';
+  const tr = document.createElement('tr');
+  tr.className = 'sla-row ' + alt;
+
+  function editableCell(content, placeholder) {
+    return `<td>
+      <div class="col-val"><div contenteditable="true" class="${content ? '' : 'placeholder-text'}">${content || placeholder}</div></div>
+    </td>`;
+  }
+
+  tr.innerHTML = `
+    <td>
+      <div class="scope-toggle">
+        <span class="scope-lbl">Scope:</span>
+        <span class="scope-badge in" onclick="toggleScope(this)">In scope</span>
+      </div>
+      <div class="col-val" style="font-weight:700;font-size:12px;padding:4px 8px 8px">${isCustom ? '<div contenteditable="true" class="placeholder-text">Enter objective name</div>' : obj.name}</div>
+    </td>
+    ${editableCell(obj.kpi, 'Enter KPI metric')}
+    ${editableCell(obj.target, 'Enter quantified target (e.g. ≥98.5% monthly)')}
+    ${editableCell(obj.verification, 'Describe how measurement is collected and verified')}
+    ${editableCell(obj.payment, 'Describe how fees adjust based on KPI performance')}
+    ${editableCell(obj.remedy, 'Describe escalating remedies for non-performance')}
+  `;
+
+  // Remove placeholder on focus
+  tr.querySelectorAll('[contenteditable]').forEach(el => {
+    el.addEventListener('focus', () => { if (el.classList.contains('placeholder-text')) { el.textContent = ''; el.classList.remove('placeholder-text'); } });
+    el.addEventListener('blur', () => {
+      if (!el.textContent.trim()) {
+        el.classList.add('placeholder-text');
+      }
+    });
+  });
+
+  return tr;
+}
+
+function toggleScope(badge) {
+  const isIn = badge.classList.contains('in');
+  badge.classList.toggle('in', !isIn);
+  badge.classList.toggle('out', isIn);
+  badge.textContent = isIn ? 'Out of scope' : 'In scope';
+}
+
+function addRow() {
+  customCount++;
+  const body = document.getElementById('sla-body');
+  const existing = body.rows.length;
+  const tr = makeSlaRow({}, existing, true);
+  body.appendChild(tr);
+}
+
+// Render initial rows
+const body = document.getElementById('sla-body');
+OBJECTIVES.forEach((obj, i) => {
+  body.appendChild(makeSlaRow(obj, i));
+});
+</script>
+</body>
+</html>

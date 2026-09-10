@@ -1,0 +1,41 @@
+{
+  "name": "e2e_customer_segmentation",
+  "description": "EaaS E2E Operating Model — A1.8 Customer Segmentation. Identify which customer segments are the best candidates for EaaS — based on operational maturity, contract appetite, and outcome alignment — to focus sales effort where conversion is highest.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "current_customer_base": {
+        "type": "STRING",
+        "description": "Description of existing customers and market"
+      },
+      "product_focus": {
+        "type": "STRING",
+        "description": "Products or asset categories to lead with"
+      },
+      "sales_capacity": {
+        "type": "STRING",
+        "description": "Available sales headcount and territory coverage"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "current_customer_base"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A1.8",
+    "skill_group": "A1 · Strategy & Discovery",
+    "skill_role": "Commercial Director",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "segmentation",
+      "icp",
+      "targeting",
+      "commercial",
+      "gtm"
+    ]
+  }
+}

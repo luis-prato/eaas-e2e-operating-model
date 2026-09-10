@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.1",
+  "slug": "e2e-analytics-esg-dashboards",
+  "name": "Analytics & ESG Dashboards",
+  "fullName": "A5.1 Analytics & ESG Dashboards",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Support",
+  "layer": "Shared Platforms",
+  "role": "Data & Sustainability Lead",
+  "tags": [
+    "analytics",
+    "esg",
+    "dashboards",
+    "reporting",
+    "sustainability",
+    "kpi"
+  ],
+  "summary": "Design and deploy the three-tier dashboard architecture that gives operations, customers, and leadership real-time visibility of performance, value, and ESG outcomes.",
+  "outcomes": [
+    "Operational, customer, and ESG dashboard specifications",
+    "ESG measurement framework (energy, circular economy, social)",
+    "Data pipeline and update frequency architecture",
+    "Dashboard governance and access control model"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

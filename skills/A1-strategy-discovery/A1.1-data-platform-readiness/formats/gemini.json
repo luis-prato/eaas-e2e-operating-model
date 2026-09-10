@@ -1,0 +1,41 @@
+{
+  "name": "e2e_data_platform_readiness",
+  "description": "EaaS E2E Operating Model — A1.1 Data Platform Readiness. Assess whether your data infrastructure can support real-time asset monitoring, automated SLA calculation, and ESG reporting before an EaaS contract goes live.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "asset_type": {
+        "type": "STRING",
+        "description": "Type of industrial asset to be monitored (e.g. compressor, HVAC, conveyor)"
+      },
+      "data_sources": {
+        "type": "STRING",
+        "description": "Existing data sources and systems (SCADA, ERP, CMMS, etc.)"
+      },
+      "sla_requirements": {
+        "type": "STRING",
+        "description": "Performance KPIs and SLA targets the contract must measure"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "asset_type"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A1.1",
+    "skill_group": "A1 · Strategy & Discovery",
+    "skill_role": "Technology Lead",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "data",
+      "infrastructure",
+      "iot",
+      "esg",
+      "readiness"
+    ]
+  }
+}

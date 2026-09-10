@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.2",
+  "slug": "e2e-continuous-improvement",
+  "name": "Continuous Improvement",
+  "fullName": "A5.2 Continuous Improvement",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Improve",
+  "layer": "Middle Office",
+  "role": "Operations Manager",
+  "tags": [
+    "continuous-improvement",
+    "pdca",
+    "reliability",
+    "margin",
+    "analytics"
+  ],
+  "summary": "Run a structured PDCA improvement programme that prevents margin erosion, reduces reactive maintenance, and compounds reliability gains across the EaaS portfolio over time.",
+  "outcomes": [
+    "Continuous improvement action register",
+    "Monthly performance variance analysis process",
+    "Improvement ROI tracker",
+    "Technology improvement roadmap (predictive analytics)"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

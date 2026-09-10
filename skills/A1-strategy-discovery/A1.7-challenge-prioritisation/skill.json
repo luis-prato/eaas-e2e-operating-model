@@ -1,0 +1,36 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.7",
+  "slug": "e2e-challenge-prioritisation",
+  "name": "Challenge Prioritisation",
+  "fullName": "A1.7 Challenge Prioritisation",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Back Office",
+  "role": "Strategy Lead",
+  "tags": [
+    "barriers",
+    "challenges",
+    "prioritisation",
+    "transformation"
+  ],
+  "summary": "Identify and rank the internal and external barriers to EaaS transition so leadership can allocate resources to the challenges that matter most.",
+  "outcomes": [
+    "EaaS barrier register with severity ratings",
+    "Prioritised challenge roadmap",
+    "Resource allocation recommendations",
+    "Executive challenge briefing"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

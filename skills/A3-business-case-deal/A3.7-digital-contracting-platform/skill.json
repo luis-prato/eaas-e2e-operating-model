@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A3.7",
+  "slug": "e2e-digital-contracting-platform",
+  "name": "Digital Contracting Platform",
+  "fullName": "A3.7 Digital Contracting Platform",
+  "group": "A3 · Business Case & Deal",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Order",
+  "layer": "Shared Platforms",
+  "role": "Technology Lead",
+  "tags": [
+    "digital-contracting",
+    "platform",
+    "automation",
+    "iot",
+    "billing"
+  ],
+  "summary": "Specify and implement the digital contracting platform that manages EaaS contract data, automates obligation tracking, and integrates with IoT, CMMS, and billing systems.",
+  "outcomes": [
+    "Digital contracting platform specification",
+    "EaaS contract data model",
+    "System integration architecture",
+    "Platform selection and implementation roadmap"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

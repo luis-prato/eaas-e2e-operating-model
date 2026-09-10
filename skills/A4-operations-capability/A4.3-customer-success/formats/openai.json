@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_customer_success",
+    "description": "[EaaS E2E Operating Model — A4.3 Customer Success] Manage the ongoing customer relationship to maximise satisfaction, prevent churn, and build the commercial conditions for contract renewal and expansion. Outputs: Account health scoring framework; Customer engagement cadence (monthly/quarterly/annual); Value communication and reporting toolkit; Renewal playbook with 18-month timeline.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "account_name": {
+          "type": "string",
+          "description": "Customer account name and contract details"
+        },
+        "account_health": {
+          "type": "string",
+          "description": "Current account health indicators (NPS, CSAT, SLA performance)"
+        },
+        "renewal_date": {
+          "type": "string",
+          "description": "Contract renewal date"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "account_name"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A4 · Operations & Capability",
+    "role": "Customer Success Manager",
+    "tags": [
+      "customer-success",
+      "renewal",
+      "nps",
+      "account-health",
+      "churn"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A4-operations-capability/A4.3-customer-success"
+  }
+}

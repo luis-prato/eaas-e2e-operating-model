@@ -1,0 +1,41 @@
+{
+  "name": "e2e_risk_assessment",
+  "description": "EaaS E2E Operating Model — A3.4 Risk Assessment. Identify, score, and allocate the full risk register for an EaaS contract — covering technical, commercial, operational, and strategic risks — with mitigation strategies for each.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "contract_context": {
+        "type": "STRING",
+        "description": "EaaS contract description, asset type, and customer"
+      },
+      "contract_term": {
+        "type": "STRING",
+        "description": "Contract duration and scale"
+      },
+      "risk_appetite": {
+        "type": "STRING",
+        "description": "Organisation's risk appetite and any known exposure limits"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "contract_context"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.4",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Risk Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "risk",
+      "contracts",
+      "mitigation",
+      "allocation",
+      "scoring"
+    ]
+  }
+}

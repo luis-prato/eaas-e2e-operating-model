@@ -1,0 +1,52 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_analytics_esg_dashboards",
+    "description": "[EaaS E2E Operating Model — A5.1 Analytics & ESG Dashboards] Design and deploy the three-tier dashboard architecture that gives operations, customers, and leadership real-time visibility of performance, value, and ESG outcomes. Outputs: Operational, customer, and ESG dashboard specifications; ESG measurement framework (energy, circular economy, social); Data pipeline and update frequency architecture; Dashboard governance and access control model.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "audience": {
+          "type": "string",
+          "description": "Primary dashboard audience (operations, customers, leadership, investors)"
+        },
+        "asset_type": {
+          "type": "string",
+          "description": "Asset type and performance KPIs to display"
+        },
+        "esg_scope": {
+          "type": "string",
+          "description": "ESG reporting scope (energy, emissions, circular economy, social)"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "audience"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A5 · Performance Management",
+    "role": "Data & Sustainability Lead",
+    "tags": [
+      "analytics",
+      "esg",
+      "dashboards",
+      "reporting",
+      "sustainability",
+      "kpi"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A5-performance-management/A5.1-analytics-esg-dashboards"
+  }
+}

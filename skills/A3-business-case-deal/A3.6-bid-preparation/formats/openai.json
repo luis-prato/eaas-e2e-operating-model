@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_bid_preparation",
+    "description": "[EaaS E2E Operating Model — A3.6 Bid Preparation] Produce a winning EaaS bid — structuring the technical, commercial, and legal response to maximise clarity, differentiation, and evaluator confidence. Outputs: Bid production process and ownership map; Proposal structure and quality checklist; Win theme and differentiator framework; Review and approval gate process.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tender_requirements": {
+          "type": "string",
+          "description": "Customer's tender requirements and evaluation criteria"
+        },
+        "win_themes": {
+          "type": "string",
+          "description": "Key differentiators and win themes to emphasise"
+        },
+        "submission_deadline": {
+          "type": "string",
+          "description": "Bid submission deadline and page limits"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "tender_requirements"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A3 · Business Case & Deal",
+    "role": "Bid Manager",
+    "tags": [
+      "bid",
+      "proposal",
+      "win-themes",
+      "differentiators",
+      "review-gate"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A3-business-case-deal/A3.6-bid-preparation"
+  }
+}

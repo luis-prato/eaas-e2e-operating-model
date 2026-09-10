@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.6",
+  "slug": "e2e-return-refurbishment",
+  "name": "Return & Refurbishment",
+  "fullName": "A5.6 Return & Refurbishment",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Improve",
+  "layer": "Back Office",
+  "role": "Asset Manager",
+  "tags": [
+    "return",
+    "refurbishment",
+    "residual-value",
+    "circular-economy",
+    "esg",
+    "asset-lifecycle"
+  ],
+  "summary": "Manage end-of-contract asset return, condition assessment, refurbishment, and residual value realisation to close the circular economy loop of every EaaS contract.",
+  "outcomes": [
+    "End-of-contract asset disposition plan",
+    "Condition assessment and grading protocol (Grade A–D)",
+    "Refurbishment scope by condition grade",
+    "Circular economy ESG impact report"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

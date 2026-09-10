@@ -1,0 +1,45 @@
+{
+  "name": "e2e_business_case",
+  "description": "EaaS E2E Operating Model — A3.1 Business Case. Build the full EaaS business case — P&L model, cash flow, residual value assumptions, and scenario analysis — to support internal investment approval and customer commercial negotiation.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "contract_value": {
+        "type": "STRING",
+        "description": "Estimated annual contract value and term"
+      },
+      "asset_cost": {
+        "type": "STRING",
+        "description": "Asset acquisition or manufacturing cost"
+      },
+      "service_cost_assumptions": {
+        "type": "STRING",
+        "description": "Expected maintenance, parts, and labour costs"
+      },
+      "residual_value_assumption": {
+        "type": "STRING",
+        "description": "Expected asset residual value at contract end"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "contract_value"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A3.1",
+    "skill_group": "A3 · Business Case & Deal",
+    "skill_role": "Commercial Director",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "business-case",
+      "financial-model",
+      "pl",
+      "residual-value",
+      "scenario"
+    ]
+  }
+}

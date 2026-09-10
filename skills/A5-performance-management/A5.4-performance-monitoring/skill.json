@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A5.4",
+  "slug": "e2e-performance-monitoring",
+  "name": "Performance Monitoring",
+  "fullName": "A5.4 Performance Monitoring",
+  "group": "A5 · Performance Management",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Support",
+  "layer": "Middle Office",
+  "role": "Contract Manager",
+  "tags": [
+    "performance",
+    "monitoring",
+    "sla",
+    "kpi",
+    "compliance",
+    "telemetry"
+  ],
+  "summary": "Measure EaaS asset and service KPIs with precision — from IoT data collection through SLA compliance determination and the monthly performance certificate.",
+  "outcomes": [
+    "KPI measurement protocols (availability, output, efficiency)",
+    "SLA compliance determination process",
+    "Dispute-proofing monitoring framework",
+    "Monthly SLA compliance certificate"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

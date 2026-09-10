@@ -1,0 +1,37 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A2.5",
+  "slug": "e2e-implementation-blueprint",
+  "name": "Implementation Blueprint",
+  "fullName": "A2.5 Implementation Blueprint",
+  "group": "A2 · Solution Design",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Order",
+  "layer": "Back Office",
+  "role": "Programme Manager",
+  "tags": [
+    "implementation",
+    "programme",
+    "roadmap",
+    "go-live",
+    "change-management"
+  ],
+  "summary": "Build the master programme plan for EaaS transition — covering technology, operations, commercial, and change management workstreams from design through to first contract go-live.",
+  "outcomes": [
+    "EaaS transition programme plan",
+    "Workstream structure and ownership",
+    "Milestone and dependency map",
+    "Go-live readiness criteria"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

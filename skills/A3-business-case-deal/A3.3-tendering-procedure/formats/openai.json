@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_tendering_procedure",
+    "description": "[EaaS E2E Operating Model — A3.3 Tendering Procedure] Manage the EaaS tendering process — from RFI/RFP response through to preferred bidder selection — with qualification criteria, scoring models, and negotiation strategy. Outputs: Tender qualification and bid/no-bid framework; RFP response structure and content guide; Evaluation scoring model; Preferred bidder negotiation playbook.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "tender_type": {
+          "type": "string",
+          "description": "Type of tender (RFI, RFP, ITT, competitive dialogue)"
+        },
+        "customer_requirements": {
+          "type": "string",
+          "description": "Customer's stated requirements and evaluation criteria"
+        },
+        "competitive_context": {
+          "type": "string",
+          "description": "Known competitors and competitive dynamics"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "tender_type"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A3 · Business Case & Deal",
+    "role": "Commercial Manager",
+    "tags": [
+      "tendering",
+      "rfp",
+      "bid",
+      "procurement",
+      "qualification"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A3-business-case-deal/A3.3-tendering-procedure"
+  }
+}

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaaS Financing Mode Fit Matrix</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #fff; color: #111; font-family: Arial, "Helvetica Neue", sans-serif; font-size: 13px; }
+.page-wrap { max-width: 1020px; margin: 0 auto; padding: 36px 28px 60px; }
+
+.title-block { background: #111; color: #fff; padding: 24px 28px 20px; margin: -36px -28px 28px; }
+.title-block h1 { font-size: 20px; font-weight: 700; line-height: 1.2; margin-bottom: 8px; }
+.accent-bar { width: 88px; height: 5px; background: #00FB92; border-radius: 2px; margin-bottom: 8px; }
+.attribution { font-size: 10px; color: rgba(255,255,255,0.45); }
+
+.meta-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.meta-field label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 3px; }
+.meta-field input { width: 100%; border: none; border-bottom: 1.5px solid #ddd; padding: 4px 0; font-family: Arial, sans-serif; font-size: 12px; outline: none; }
+.meta-field input:focus { border-bottom-color: #00FB92; }
+
+.section-hdr { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(0,0,0,0.45); margin: 20px 0 10px; border-bottom: 1px solid rgba(0,0,0,0.1); padding-bottom: 6px; }
+
+/* Mode description cards */
+.mode-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 24px; }
+.mode-card { border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; padding: 10px 10px 8px; background: #f9f9f9; }
+.mode-card .mode-name { font-weight: 700; font-size: 11px; color: #111; margin-bottom: 4px; }
+.mode-card .mode-owns { font-size: 10px; color: rgba(0,0,0,0.5); }
+.mode-card .mode-rev { font-size: 10px; color: rgba(0,0,0,0.5); border-top: 1px solid rgba(0,0,0,0.08); margin-top: 5px; padding-top: 5px; }
+
+/* Scoring table */
+.tbl-wrap { overflow-x: auto; }
+table.matrix { width: 100%; border-collapse: collapse; font-size: 12px; }
+.matrix th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; padding: 8px; border: 1px solid rgba(0,0,0,0.1); text-align: center; }
+.matrix th.crit-hdr { background: #111; color: #fff; text-align: left; min-width: 200px; }
+.matrix th.wt-hdr { background: #333; color: #fff; width: 60px; }
+.matrix th.mode-hdr { background: #555; color: #fff; width: 110px; }
+
+.matrix td { padding: 8px; border: 1px solid rgba(0,0,0,0.08); vertical-align: top; }
+.matrix tbody tr:nth-child(odd) td { background: #f5f5f5; }
+.matrix tbody tr:nth-child(even) td { background: #fff; }
+
+.crit-name { font-weight: 700; color: #111; display: block; margin-bottom: 2px; }
+.crit-desc { font-size: 10.5px; color: rgba(0,0,0,0.5); }
+
+.wt-cell { text-align: center; }
+input.wt-in {
+  width: 36px; height: 26px; text-align: center;
+  border: 1.5px solid rgba(0,0,0,0.15); border-radius: 3px;
+  font-family: Arial; font-size: 14px; font-weight: 700; color: #111;
+  background: #fff; outline: none;
+}
+input.wt-in:focus { border-color: #00FB92; }
+
+.mode-cell { text-align: center; }
+.adl-bench { font-size: 10px; color: rgba(0,0,0,0.35); margin-bottom: 4px; }
+.adl-bench span { display: inline-block; background: #eee; padding: 1px 5px; border-radius: 2px; font-weight: 700; }
+.adl-bars { display: flex; gap: 2px; justify-content: center; margin-bottom: 5px; }
+.adl-bar { height: 6px; width: 12px; border-radius: 1px; background: #ddd; }
+.adl-bar.filled { background: #00c073; }
+
+input.ctx-in {
+  width: 44px; height: 28px; text-align: center;
+  border: 1.5px solid rgba(0,0,0,0.15); border-radius: 3px;
+  font-family: Arial; font-size: 14px; font-weight: 700; color: #111;
+  background: #fff; outline: none;
+}
+input.ctx-in:focus { border-color: #00FB92; }
+.ctx-label { font-size: 9.5px; color: rgba(0,0,0,0.4); display: block; margin-bottom: 2px; }
+
+/* Totals row */
+.totals-row td { background: #111 !important; color: #fff; font-weight: 700; text-align: center; padding: 10px 8px; }
+.totals-row td.crit-hdr { text-align: left; }
+.total-val { font-size: 20px; font-weight: 700; color: #00FB92; display: block; }
+.total-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.5); }
+
+/* Best fit banner */
+.best-fit-row { display: none; }
+.best-fit-row.visible { display: flex; align-items: center; gap: 12px; background: #f0fff8; border: 1.5px solid #00c073; border-radius: 4px; padding: 12px 16px; margin: 16px 0; }
+.bf-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #006633; font-weight: 700; }
+.bf-mode { font-size: 18px; font-weight: 700; color: #111; }
+.bf-score { font-size: 13px; color: rgba(0,0,0,0.5); }
+
+/* Winner column highlight */
+.matrix td.winner, .matrix th.winner { border-top: 2px solid #00c073; border-bottom: 2px solid #00c073; }
+.matrix th.winner { border-top: 3px solid #00c073; }
+.totals-row td.winner { background: #00a863 !important; color: #fff; }
+.totals-row td.winner .total-val { color: #fff; }
+.totals-row td.winner .total-label { color: rgba(255,255,255,0.75); }
+
+/* Scoring guide */
+.score-guide { display: flex; gap: 16px; flex-wrap: wrap; font-size: 10.5px; margin-bottom: 12px; color: rgba(0,0,0,0.5); }
+.sg-item strong { color: #111; }
+
+/* Explanation box */
+.explain-box { border-left: 3px solid #00FB92; background: #f9f9f9; padding: 12px 16px; margin: 20px 0; font-size: 11.5px; color: rgba(0,0,0,0.65); line-height: 1.6; }
+.explain-box strong { color: #111; }
+
+/* Notes */
+.notes-section { margin-top: 24px; }
+.notes-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
+.notes-area { width: 100%; min-height: 60px; border: 1px solid rgba(0,0,0,0.1); border-top: 3px solid #00FB92; background: #f9f9f9; padding: 10px; font-family: Arial; font-size: 12px; color: #111; outline: none; border-radius: 0 0 3px 3px; resize: vertical; }
+
+.btn-row { display: flex; gap: 10px; margin: 20px 0; }
+.btn { padding: 8px 18px; border: none; border-radius: 3px; font-family: Arial; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; cursor: pointer; }
+.btn-primary { background: #111; color: #fff; }
+.btn-secondary { background: #f0f0f0; color: #111; }
+.btn:hover { opacity: 0.8; }
+
+.footer { border-top: 1px solid rgba(0,0,0,0.1); padding-top: 14px; font-size: 10px; color: rgba(0,0,0,0.4); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+@media print {
+  body { font-size: 9px; }
+  .page-wrap { max-width: 100%; padding: 12px 16px; }
+  .title-block { margin: -12px -16px 16px; padding: 14px 16px 12px; }
+  .btn-row { display: none; }
+  .matrix { font-size: 8.5px; }
+  .matrix th { font-size: 7.5px; padding: 5px; }
+  .matrix td { padding: 4px 5px; }
+  .title-block, .matrix th, .totals-row td { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+<div class="title-block">
+  <h1>EaaS Financing Mode Fit Matrix</h1>
+  <div class="accent-bar"></div>
+  <div class="attribution">EaaS End-to-End Operating Model · v1.24.0 · luisprato.com/resources · Apache 2.0</div>
+</div>
+
+<div class="meta-row">
+  <div class="meta-field"><label>Equipment / System</label><input type="text" placeholder="Enter equipment or product name"></div>
+  <div class="meta-field"><label>Assessed By</label><input type="text" placeholder="Name / Role"></div>
+  <div class="meta-field"><label>Assessment Date</label><input type="text" placeholder="DD/MM/YYYY"></div>
+</div>
+
+<div class="section-hdr">Financing Mode Overview</div>
+<div class="mode-cards">
+  <div class="mode-card">
+    <div class="mode-name">Purchase</div>
+    <div class="mode-owns">Asset Owner: Customer</div>
+    <div class="mode-rev">Revenue: One-time sale</div>
+  </div>
+  <div class="mode-card">
+    <div class="mode-name">Financing</div>
+    <div class="mode-owns">Asset Owner: Customer (post-term)</div>
+    <div class="mode-rev">Revenue: Installments + interest</div>
+  </div>
+  <div class="mode-card">
+    <div class="mode-name">Leasing</div>
+    <div class="mode-owns">Asset Owner: Provider / Lessor</div>
+    <div class="mode-rev">Revenue: Periodic lease payments</div>
+  </div>
+  <div class="mode-card">
+    <div class="mode-name">Outsourcing</div>
+    <div class="mode-owns">Asset Owner: Provider</div>
+    <div class="mode-rev">Revenue: Service fee (outcome-neutral)</div>
+  </div>
+  <div class="mode-card">
+    <div class="mode-name">AaaS</div>
+    <div class="mode-owns">Asset Owner: Provider + Bank</div>
+    <div class="mode-rev">Revenue: Usage / performance fee</div>
+  </div>
+</div>
+
+<div class="section-hdr">Scoring Instructions</div>
+<div class="explain-box">
+  <strong>ADL Benchmark</strong> — Pre-filled reference scores (1–5) from the ADL framework showing how well each financing mode fits each criterion in general.<br>
+  <strong>Your Weight</strong> — How important is this criterion for your situation? (1 = low, 2 = medium, 3 = high importance)<br>
+  <strong>Your Score</strong> — Override the ADL benchmark with your own score (1–5) based on your specific context.<br>
+  The <strong>Weighted Total</strong> per mode is calculated as: Σ (Your Weight × Your Score) across all 6 criteria. Higher total = stronger fit.
+</div>
+
+<div class="score-guide">
+  <span><strong>Score 1</strong> = Very weak fit</span>
+  <span><strong>Score 2</strong> = Weak fit</span>
+  <span><strong>Score 3</strong> = Neutral</span>
+  <span><strong>Score 4</strong> = Good fit</span>
+  <span><strong>Score 5</strong> = Strong fit</span>
+  <span>|</span>
+  <span><strong>Weight 1</strong> = Low importance</span>
+  <span><strong>Weight 2</strong> = Medium importance</span>
+  <span><strong>Weight 3</strong> = High importance</span>
+</div>
+
+<div id="best-fit-row" class="best-fit-row">
+  <div class="bf-label">Best Fit Mode</div>
+  <div class="bf-mode" id="bf-mode">—</div>
+  <div class="bf-score" id="bf-score"></div>
+</div>
+
+<div class="tbl-wrap">
+<table class="matrix" id="matrix-table">
+  <thead>
+    <tr>
+      <th class="crit-hdr">Criterion</th>
+      <th class="wt-hdr">Weight<br>(1–3)</th>
+      <th class="mode-hdr" id="th-0">Purchase</th>
+      <th class="mode-hdr" id="th-1">Financing</th>
+      <th class="mode-hdr" id="th-2">Leasing</th>
+      <th class="mode-hdr" id="th-3">Outsourcing</th>
+      <th class="mode-hdr" id="th-4">AaaS</th>
+    </tr>
+  </thead>
+  <tbody id="matrix-body">
+  </tbody>
+  <tfoot>
+    <tr class="totals-row" id="totals-row">
+      <td class="crit-hdr">Weighted Total</td>
+      <td>—</td>
+      <td id="tot-0"><span class="total-val" id="tv-0">—</span><span class="total-label">Weighted Score</span></td>
+      <td id="tot-1"><span class="total-val" id="tv-1">—</span><span class="total-label">Weighted Score</span></td>
+      <td id="tot-2"><span class="total-val" id="tv-2">—</span><span class="total-label">Weighted Score</span></td>
+      <td id="tot-3"><span class="total-val" id="tv-3">—</span><span class="total-label">Weighted Score</span></td>
+      <td id="tot-4"><span class="total-val" id="tv-4">—</span><span class="total-label">Weighted Score</span></td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="window.print()">Print / Save as PDF</button>
+  <button class="btn btn-secondary" onclick="resetAll()">Reset Scores</button>
+</div>
+
+<div class="notes-section">
+  <div class="notes-lbl">Strategic Notes & Mode Selection Rationale</div>
+  <textarea class="notes-area" placeholder="Explain the chosen financing mode and key factors that drove the decision. E.g. 'AaaS selected due to high CAPEX sensitivity and existing IoT readiness. Provider balance sheet is sufficient for 12-month runway...'"></textarea>
+</div>
+
+<div style="margin-top: 28px;"></div>
+<div class="footer">
+  <span>EaaS Financing Mode Fit Matrix · EaaS End-to-End Operating Model v1.24.0</span>
+  <span>© Luis Prato · Apache 2.0 · luisprato.com/resources</span>
+</div>
+
+</div>
+
+<script>
+const MODES = ['Purchase', 'Financing', 'Leasing', 'Outsourcing', 'AaaS'];
+
+const CRITERIA = [
+  {
+    name: 'Customer CAPEX sensitivity',
+    desc: 'How much does your customer need to avoid a large upfront capital outlay?',
+    adl: [1, 3, 4, 5, 5]
+  },
+  {
+    name: 'Provider balance sheet strength',
+    desc: 'Can your business carry equipment assets on its balance sheet for 5–10 years?',
+    adl: [5, 4, 3, 2, 2]
+  },
+  {
+    name: 'IoT / performance data readiness',
+    desc: 'Do you have real-time monitoring, metering, and remote diagnostics in place?',
+    adl: [1, 1, 2, 3, 5]
+  },
+  {
+    name: 'Recurring revenue goal',
+    desc: 'How important is building a long-term subscription or service revenue stream?',
+    adl: [1, 2, 3, 4, 5]
+  },
+  {
+    name: 'Speed to market',
+    desc: 'How quickly do you need to close deals and deploy this model commercially?',
+    adl: [5, 4, 3, 2, 1]
+  },
+  {
+    name: 'Risk transfer to provider',
+    desc: 'How much operational and financial risk does the provider absorb in this model?',
+    adl: [1, 2, 3, 4, 5]
+  }
+];
+
+// Build table
+const body = document.getElementById('matrix-body');
+
+CRITERIA.forEach((c, ci) => {
+  const tr = document.createElement('tr');
+  let html = `<td><span class="crit-name">${c.name}</span><span class="crit-desc">${c.desc}</span></td>`;
+  html += `<td class="wt-cell"><input class="wt-in" type="number" min="1" max="3" value="2" data-ci="${ci}" oninput="recalc()"></td>`;
+
+  MODES.forEach((m, mi) => {
+    const v = c.adl[mi];
+    const bars = Array.from({length: 5}, (_, i) =>
+      `<div class="adl-bar${i < v ? ' filled' : ''}"></div>`).join('');
+    html += `
+      <td class="mode-cell" data-mi="${mi}">
+        <div class="adl-bench">ADL <span>${v}</span></div>
+        <div class="adl-bars">${bars}</div>
+        <span class="ctx-label">Your Score</span>
+        <input class="ctx-in" type="number" min="1" max="5" value="${v}" data-ci="${ci}" data-mi="${mi}" oninput="recalc()">
+      </td>`;
+  });
+
+  tr.innerHTML = html;
+  body.appendChild(tr);
+});
+
+function recalc() {
+  const totals = [0, 0, 0, 0, 0];
+  let hasInput = false;
+
+  CRITERIA.forEach((c, ci) => {
+    const wtIn = document.querySelector(`.wt-in[data-ci="${ci}"]`);
+    const wt = Math.min(3, Math.max(1, parseInt(wtIn.value) || 2));
+
+    MODES.forEach((_, mi) => {
+      const sIn = document.querySelector(`.ctx-in[data-ci="${ci}"][data-mi="${mi}"]`);
+      const s = Math.min(5, Math.max(1, parseInt(sIn.value) || 0));
+      if (s) { totals[mi] += wt * s; hasInput = true; }
+    });
+  });
+
+  // Find max
+  const maxVal = Math.max(...totals);
+  const winnerIdx = totals.indexOf(maxVal);
+
+  MODES.forEach((m, mi) => {
+    const tv = document.getElementById('tv-' + mi);
+    const tot = document.getElementById('tot-' + mi);
+    const th = document.getElementById('th-' + mi);
+
+    tv.textContent = totals[mi] || '—';
+    tot.classList.toggle('winner', hasInput && mi === winnerIdx);
+    th.classList.toggle('winner', hasInput && mi === winnerIdx);
+
+    // Column cells
+    document.querySelectorAll(`[data-mi="${mi}"]`).forEach(cell => {
+      cell.classList.toggle('winner', hasInput && mi === winnerIdx);
+    });
+  });
+
+  // Best fit banner
+  const bfRow = document.getElementById('best-fit-row');
+  if (hasInput && maxVal > 0) {
+    bfRow.classList.add('visible');
+    document.getElementById('bf-mode').textContent = MODES[winnerIdx];
+    document.getElementById('bf-score').textContent = `Weighted total: ${maxVal} / ${CRITERIA.length * 3 * 5}`;
+  } else {
+    bfRow.classList.remove('visible');
+  }
+}
+
+function resetAll() {
+  CRITERIA.forEach((c, ci) => {
+    const wtIn = document.querySelector(`.wt-in[data-ci="${ci}"]`);
+    if (wtIn) wtIn.value = 2;
+    MODES.forEach((_, mi) => {
+      const sIn = document.querySelector(`.ctx-in[data-ci="${ci}"][data-mi="${mi}"]`);
+      if (sIn) sIn.value = c.adl[mi];
+    });
+  });
+  recalc();
+}
+
+// Initial calculation
+recalc();
+</script>
+</body>
+</html>

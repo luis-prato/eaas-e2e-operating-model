@@ -1,0 +1,36 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.3",
+  "slug": "e2e-discovery-blueprint",
+  "name": "Discovery Blueprint",
+  "fullName": "A1.3 Discovery Blueprint",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": false,
+  "stage": "Discover",
+  "layer": "Front Office",
+  "role": "Strategy Lead",
+  "tags": [
+    "discovery",
+    "customer",
+    "research",
+    "opportunity"
+  ],
+  "summary": "Structure the initial customer discovery phase to understand operational context, pain points, and outcome ambitions before any solution is proposed.",
+  "outcomes": [
+    "Customer discovery interview guide",
+    "Operational baseline documentation",
+    "Pain point and opportunity register",
+    "Discovery-to-design handover pack"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

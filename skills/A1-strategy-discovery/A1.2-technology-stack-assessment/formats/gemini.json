@@ -1,0 +1,42 @@
+{
+  "name": "e2e_technology_stack_assessment",
+  "description": "EaaS E2E Operating Model — A1.2 Technology Stack Assessment. Evaluate your current technology systems against EaaS requirements and build a roadmap to close capability gaps before your first contract.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "current_systems": {
+        "type": "STRING",
+        "description": "List of current technology systems in use"
+      },
+      "eaas_requirements": {
+        "type": "STRING",
+        "description": "Specific EaaS capabilities required (IoT, billing, CMMS, etc.)"
+      },
+      "budget_constraints": {
+        "type": "STRING",
+        "description": "Investment budget available for technology upgrades"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "current_systems"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A1.2",
+    "skill_group": "A1 · Strategy & Discovery",
+    "skill_role": "Technology Lead",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "technology",
+      "systems",
+      "iot",
+      "cmms",
+      "erp",
+      "assessment"
+    ]
+  }
+}

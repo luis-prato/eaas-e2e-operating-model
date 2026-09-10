@@ -1,0 +1,41 @@
+{
+  "name": "e2e_implementation_blueprint",
+  "description": "EaaS E2E Operating Model — A2.5 Implementation Blueprint. Build the master programme plan for EaaS transition — covering technology, operations, commercial, and change management workstreams from design through to first contract go-live.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "organisation_context": {
+        "type": "STRING",
+        "description": "Organisation size, industry, and current state"
+      },
+      "first_contract_target": {
+        "type": "STRING",
+        "description": "Target date and scope for first EaaS contract"
+      },
+      "constraints": {
+        "type": "STRING",
+        "description": "Budget, headcount, and technology constraints"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "organisation_context"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A2.5",
+    "skill_group": "A2 · Solution Design",
+    "skill_role": "Programme Manager",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "implementation",
+      "programme",
+      "roadmap",
+      "go-live",
+      "change-management"
+    ]
+  }
+}

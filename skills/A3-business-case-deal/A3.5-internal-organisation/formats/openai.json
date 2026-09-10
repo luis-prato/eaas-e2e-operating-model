@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_internal_organisation",
+    "description": "[EaaS E2E Operating Model — A3.5 Internal Organisation] Design the governance structure, team composition, and decision-making cadences required to operate EaaS contracts reliably at scale. Outputs: EaaS organisational model and RACI; Governance cadence and escalation framework; Headcount and capability requirements by scale; EaaS Centre of Excellence blueprint.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "portfolio_size": {
+          "type": "string",
+          "description": "Current and target number of EaaS contracts"
+        },
+        "existing_structure": {
+          "type": "string",
+          "description": "Current organisational structure and teams"
+        },
+        "geographic_scope": {
+          "type": "string",
+          "description": "Single country or multi-country operation"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "portfolio_size"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A3 · Business Case & Deal",
+    "role": "Operations Director",
+    "tags": [
+      "governance",
+      "organisation",
+      "raci",
+      "team-design",
+      "centre-of-excellence"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A3-business-case-deal/A3.5-internal-organisation"
+  }
+}

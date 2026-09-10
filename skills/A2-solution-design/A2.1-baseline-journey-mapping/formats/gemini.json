@@ -1,0 +1,40 @@
+{
+  "name": "e2e_baseline_journey_mapping",
+  "description": "EaaS E2E Operating Model — A2.1 Baseline Journey Mapping. Document the customer's current asset ownership experience — from procurement through operation and disposal — to establish the baseline your EaaS model must improve on.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "customer_context": {
+        "type": "STRING",
+        "description": "Customer industry, asset types, and operational model"
+      },
+      "journey_scope": {
+        "type": "STRING",
+        "description": "Scope of the journey to map (single asset, fleet, site, etc.)"
+      },
+      "focus_pain_points": {
+        "type": "STRING",
+        "description": "Known pain points or cost areas to investigate"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "customer_context"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A2.1",
+    "skill_group": "A2 · Solution Design",
+    "skill_role": "Service Designer",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "journey-mapping",
+      "baseline",
+      "customer-experience",
+      "as-is"
+    ]
+  }
+}

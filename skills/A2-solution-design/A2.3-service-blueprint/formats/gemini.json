@@ -1,0 +1,40 @@
+{
+  "name": "e2e_service_blueprint",
+  "description": "EaaS E2E Operating Model — A2.3 Service Blueprint. Map the full operational model behind the EaaS promise — the frontstage customer interactions, backstage processes, and supporting systems that deliver the contracted outcome.",
+  "parameters": {
+    "type": "OBJECT",
+    "properties": {
+      "service_model": {
+        "type": "STRING",
+        "description": "Summary of the EaaS service model to blueprint"
+      },
+      "asset_type": {
+        "type": "STRING",
+        "description": "Asset type and deployment context"
+      },
+      "operational_constraints": {
+        "type": "STRING",
+        "description": "Known operational constraints or non-negotiables"
+      },
+      "output_format": {
+        "type": "STRING",
+        "description": "Desired output: structured_deliverable | executive_summary | action_register | detailed_report"
+      }
+    },
+    "required": [
+      "service_model"
+    ]
+  },
+  "metadata": {
+    "skill_code": "A2.3",
+    "skill_group": "A2 · Solution Design",
+    "skill_role": "Operations Designer",
+    "skill_version": "1.24.0",
+    "skill_tags": [
+      "service-blueprint",
+      "operations",
+      "process",
+      "swimlane"
+    ]
+  }
+}

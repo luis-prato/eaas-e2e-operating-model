@@ -1,0 +1,38 @@
+{
+  "schema": "eaas-skill/1.0",
+  "code": "A1.2",
+  "slug": "e2e-technology-stack-assessment",
+  "name": "Technology Stack Assessment",
+  "fullName": "A1.2 Technology Stack Assessment",
+  "group": "A1 · Strategy & Discovery",
+  "category": "EaaS E2E Operating Model",
+  "version": "1.24.0",
+  "new": true,
+  "stage": "Discover",
+  "layer": "Shared Platforms",
+  "role": "Technology Lead",
+  "tags": [
+    "technology",
+    "systems",
+    "iot",
+    "cmms",
+    "erp",
+    "assessment"
+  ],
+  "summary": "Evaluate your current technology systems against EaaS requirements and build a roadmap to close capability gaps before your first contract.",
+  "outcomes": [
+    "Technology capability gap analysis",
+    "Build vs buy vs integrate decision framework",
+    "Stack integration architecture",
+    "Technology investment roadmap"
+  ],
+  "author": "Luis Prato",
+  "license": "Apache-2.0",
+  "formats": {
+    "skill_md": "SKILL.md",
+    "openai": "formats/openai.json",
+    "gemini": "formats/gemini.json",
+    "cursor": "formats/cursor.md",
+    "generic": "formats/generic.md"
+  }
+}

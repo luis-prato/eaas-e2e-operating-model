@@ -1,0 +1,51 @@
+{
+  "type": "function",
+  "function": {
+    "name": "e2e_digital_contracting_platform",
+    "description": "[EaaS E2E Operating Model — A3.7 Digital Contracting Platform] Specify and implement the digital contracting platform that manages EaaS contract data, automates obligation tracking, and integrates with IoT, CMMS, and billing systems. Outputs: Digital contracting platform specification; EaaS contract data model; System integration architecture; Platform selection and implementation roadmap.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "contract_portfolio": {
+          "type": "string",
+          "description": "Number and complexity of contracts to manage"
+        },
+        "existing_systems": {
+          "type": "string",
+          "description": "Current CMMS, ERP, IoT, and billing systems"
+        },
+        "automation_priorities": {
+          "type": "string",
+          "description": "Key automation priorities (billing, SLA, obligations)"
+        },
+        "output_format": {
+          "type": "string",
+          "enum": [
+            "structured_deliverable",
+            "executive_summary",
+            "action_register",
+            "detailed_report"
+          ],
+          "description": "Desired output format",
+          "default": "structured_deliverable"
+        }
+      },
+      "required": [
+        "contract_portfolio"
+      ]
+    }
+  },
+  "metadata": {
+    "skill_version": "1.24.0",
+    "group": "A3 · Business Case & Deal",
+    "role": "Technology Lead",
+    "tags": [
+      "digital-contracting",
+      "platform",
+      "automation",
+      "iot",
+      "billing"
+    ],
+    "source": "https://github.com/luis-prato/eaas-skills/tree/main/skills/A3-business-case-deal/A3.7-digital-contracting-platform"
+  }
+}
